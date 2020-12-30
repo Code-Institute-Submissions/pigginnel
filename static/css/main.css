@@ -5,42 +5,49 @@ html,body {
     padding: 0px;
     overflow-x: hidden; 
 }
+.uk-sticky {
+    background-color: white;
+}
 
-h1, h5, a {
-    color:white;
+.rname {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
+    color:black;
+    text-align: center;
 }
 
 .uk-navbar {
-    overflow: hidden;
-    min-width: 100%;
-    top: 0;
-    position: fixed;
-    display: inline-flex;
-    z-index: 1;
-    background-color: rgba(40,40,40,0.8)
+    position: relative;
+    margin-top: -2em;
+    margin-bottom: -1em;
 }
 
 .uk-navbar-nav>li>a {
-    color: white;
+    color: black;
+    font-family: 'Indie Flower', cursive;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 /*-------------------------------- Hero Section -------------------- */
 
 .heroimage {
-    max-width: 100vw;
-    height: 120vh;
-    z-index: -2;
-    margin-top: -7.5em;
+    display: block;
+    width: 100vw;
+    height: auto;
+    max-height: 89vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.hero-text {
-    z-index: 1;
-    border: dashed 2px white;
-    width: 10em;
-    position: relative;
-    margin-left: 5em;
-    top: -20em;
-    color: white; 
-    font-size: 25px;
-    text-align: center;
+.herotext>h5 {
+    color: white;
+    font-family: 'Indie Flower', cursive;
+    font-size: 50px;
+}
+
+.herotext {
+    margin-top: 5em;
 }

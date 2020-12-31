@@ -19,7 +19,7 @@
         <header id="navsection">
             <div class="uk-sticky" uk-sticky="offset: 50; bottom: #viewport">
                 <div class="hero-title">
-                    <a href="">
+                    <a href="{{ url_for('index') }}">
                         <h1 class="rname">Pig in a Ginnel</h1>
                     </a>
                     <hr>
@@ -28,26 +28,31 @@
                     <div class="uk-navbar-center">
                         <ul class="uk-navbar-nav">
                             <li>
-                                <a href="">About</a>
+                                <a href="{{ url_for('index', _anchor='about') }}"">About</a>
                             </li>
                             <li>
-                                <a href="">Menu</a>
+                                <a href="{{ url_for('index', _anchor='menu') }}">Menu</a>
                             </li>
                             <li>
-                                <a href="">Reviews</a>
+                                <a href="{{ url_for('index', _anchor='reviews') }}">Reviews</a>
                             </li>
                             <li>
                                 <a href="">My Bookings</a>
+                            </li>
+                            <li>
+                                <a href="">Make a Reservation</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </header>
+        
         {% include 'hero.html' %}
         {% include 'about.html' %}
         {% include 'menu.html' %}
         {% include 'reviews.html' %}
+        
         <footer></footer>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>

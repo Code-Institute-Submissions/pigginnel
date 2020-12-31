@@ -66,6 +66,7 @@ a:hover {
     margin-left: 5vw;
     margin-right: 5vw;
     width: 90vw;
+    scroll-margin-top: 10em;
 }
 
 /*-------------------------------- Menu Section -------------------- */
@@ -74,6 +75,7 @@ a:hover {
     padding-top: 2em;
     margin-left: 5vw;
     margin-right: 5vw;
+    scroll-margin-top: 10em;
 }
 
 .sampleMenu {
@@ -91,4 +93,5 @@ a:hover {
     margin-left: 5vw;
     margin-right: 5vw;
     padding-bottom: 5em;
+    scroll-margin-top: 10em;
 }

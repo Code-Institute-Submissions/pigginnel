@@ -5,30 +5,37 @@ html,body {
     padding: 0px;
     overflow-x: hidden; 
 }
+
+
 .uk-sticky {
     background-color: white;
 }
 
-.rname {
+.rname { 
     margin-top: 0.5em;
-    margin-bottom: 0.5em;
     font-family: 'Permanent Marker', cursive;
     font-size: 50px;
     color:black;
     text-align: center;
 }
 
-.uk-navbar {
-    position: relative;
-    margin-top: -2em;
-    margin-bottom: -1em;
-}
-
-.uk-navbar-nav>li>a {
+.uk-link, a {
     color: black;
     font-family: 'Indie Flower', cursive;
+}
+
+a:hover {
+    text-decoration: none;
+    color:black;
+  }
+
+.uk-button {
     margin-left: 2em;
     margin-right: 2em;
+}
+
+.uk-navbar {
+    margin-bottom: 1em;
 }
 
 /*-------------------------------- Hero Section -------------------- */
@@ -37,7 +44,7 @@ html,body {
     display: block;
     width: 100vw;
     height: auto;
-    max-height: 80vh;
+    max-height: 85vh;
     margin-left: auto;
     margin-right: auto;
 }
@@ -56,17 +63,32 @@ html,body {
 
 #about {
     padding-top: 2em;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 90vw;
 }
 
-.chefimage { 
-    display: block;
-    height: 75vh;
-    width: auto;
-    float: right;
-    padding-right: 10em;
+/*-------------------------------- Menu Section -------------------- */
+
+#menu {
+    padding-top: 2em;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
-.aboutcard {
-    width: 30em;
-    margin-left: 5em;
+.sampleMenu {
+   margin-right: -3vw;
+}
+
+.menuText {
+    margin-right: 3vw;
+}
+
+/*-------------------------------- Menu Section -------------------- */
+
+#reviews {
+    padding-top: 2em;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding-bottom: 5em;
 }

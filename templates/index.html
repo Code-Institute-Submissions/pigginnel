@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/tail.datetime-default.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="apple-mobile-web-app-capable" content="yes">
         {% block styles %}
@@ -28,19 +29,19 @@
                     <div class="uk-navbar-center">
                         <ul class="uk-navbar-nav">
                             <li>
-                                <a href="{{ url_for('index', _anchor='about') }}"">About</a>
+                                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='about') }}">About</a></button>
                             </li>
                             <li>
-                                <a href="{{ url_for('index', _anchor='menu') }}">Menu</a>
+                                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='menu') }}">Menu</a></button>
                             </li>
                             <li>
-                                <a href="{{ url_for('index', _anchor='reviews') }}">Reviews</a>
+                                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='reviews') }}">Reviews</a></button>
                             </li>
                             <li>
-                                <a href="">My Bookings</a>
+                                <button class="uk-button uk-button-text"><a href="">My Bookings</a></button>
                             </li>
                             <li>
-                                <a href="">Make a Reservation</a>
+                                <button class="uk-button uk-button-text"><a href="">Make a Reservation</a></button>
                             </li>
                         </ul>
                     </div>
@@ -52,10 +53,14 @@
         {% include 'about.html' %}
         {% include 'menu.html' %}
         {% include 'reviews.html' %}
+        {% include 'reservation.html' %}
         
-        <footer></footer>
+        <footer>
+
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tail.DateTime@latest/"></script>
         {% block scripts %}
         {% endblock %}
     </body>

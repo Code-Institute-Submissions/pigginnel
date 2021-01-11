@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/css/uikit.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/tail.datetime-default.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        {% block styles %}
+        {% endblock %}
+        <title>Pig In A Ginnel</title>
+    </head>
+    <body>
+        <header id="navsection">
+            <div class="uk-sticky" uk-sticky="offset: 50; bottom: #viewport">
+                <div class="hero-title">
+                    <a href="{{ url_for('index') }}">
+                        <h1 class="rname">Pig in a Ginnel</h1>
+                    </a>
+                    <hr>
+                </div>
+                <nav class="uk-navbar">
+                    <div class="uk-navbar-center">
+                        <ul class="uk-navbar-nav">
+                            <li>
+                                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='about') }}">About</a></button>
+                            </li>
+                            <li>
+                                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='menu') }}">Menu</a></button>
+                            </li>
+                            <li>
+                                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='reviews') }}">Reviews</a></button>
+                            </li>
+                            <li>
+                                <button class="uk-button uk-button-text"><a href="">My Bookings</a></button>
+                            </li>
+                            <li>
+                                <button class="uk-button uk-button-text"><a href="">Make a Reservation</a></button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        {% block content %}
+        
+        {% endblock %}
+        
+        <footer>
+
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tail.DateTime@latest/"></script>
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

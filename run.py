@@ -14,7 +14,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config["OIDC_ID_TOKEN_COOKIE_NAME"] = "oidc_token"
 oidc = OpenIDConnect(app)
 okta_client = UsersClient("https://dev-9604636.okta.com",
-                          "00RYDBsaCggLPyKYe71wKcqjxZK30luUKlAfP3fiRT")
+                          os.environ.get("AUTH_TOKEN"))
 
 
 @app.before_request

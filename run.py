@@ -1,20 +1,29 @@
+
 import os
+import pymongo
 from flask import Flask, render_template, g, redirect, url_for
 from flask_oidc import OpenIDConnect
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 from okta import UsersClient
 if os.path.exists("env.py"):
     import env
+
 
 app = Flask(__name__)
 app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
 app.config["OIDC_COOKIE_SECURE"] = False
 app.config["OIDC_CALLBACK_ROUTE"] = "/oidc/callback"
 app.config["OIDC_SCOPES"] = ["openid", "email", "profile"]
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["OIDC_ID_TOKEN_COOKIE_NAME"] = "oidc_token"
 oidc = OpenIDConnect(app)
 okta_client = UsersClient("https://dev-9604636.okta.com",
                           os.environ.get("AUTH_TOKEN"))
+
+mongo = PyMongo(app)
 
 
 @app.before_request
@@ -27,7 +36,8 @@ def before_request():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    reviews = mongo.db.reviews.find()
+    return render_template("index.html", reviews=reviews)
 
 
 @app.route("/dashboard")

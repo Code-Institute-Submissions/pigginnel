@@ -4,17 +4,17 @@
         {% for review in reviews %}
         <div>
             <div class="uk-card uk-card-default uk-card-body">
-                <h3 class="uk-card-title stars">
+                
                     {% if review.stars == "1" %}
-                    <p>1</p>
+                    <img src="static/img/1star.png" id="reviewStars" alt="PNG of 1 Star">
                     {% elif review.stars == "2" %}
-                    <p>2</p>
+                    <img src="static/img/2star.png" id="reviewStars" alt="PNG of 2 Star">
                     {% elif review.stars == "3" %}
-                    <p>3</p>
+                    <img src="static/img/3star.png" id="reviewStars" alt="PNG of 3 Star">
                     {% elif review.stars == "4" %}
-                    <p>4</p>
+                    <img src="static/img/4star.png" id="reviewStars" alt="PNG of 4 Star">
                     {% elif review.stars == "5" %}
-                    <p>5</p>
+                    <img src="static/img/5star.png" id="reviewStars" alt="PNG of 5 Star">
                     {% endif %}</h3>
                 <p>{{ review.firstName }} says:</p>
                 <p>{{ review.review }}</p>

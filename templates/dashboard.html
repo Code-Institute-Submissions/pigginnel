@@ -2,6 +2,18 @@
         
 {% block content %}
 
+{% if g.user.profile.rank == "1" %}
+<p>worked</p>
+<p>worked</p>
+<p>worked</p>
+<p> worked</p>
+{% else %}
+<p>Not worked</p>
+<p>Not worked</p>
+<p>Not worked</p>
+<p>Not worked ever</p>
+
+{% endif %}
 
 {% endblock %}
 

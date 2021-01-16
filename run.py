@@ -36,7 +36,7 @@ def before_request():
 
 @app.route("/")
 def index():
-    reviews = mongo.db.reviews.find()
+    reviews = mongo.db.reviews.aggregate([{'$sample': {'size': 3}}])
     return render_template("index.html", reviews=reviews)
 
 

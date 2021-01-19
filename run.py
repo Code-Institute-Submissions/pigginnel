@@ -43,7 +43,8 @@ def index():
 @app.route("/dashboard")
 @oidc.require_login
 def dashboard():
-    return render_template("dashboard.html")
+    admin = os.environ.get("ADMIN")
+    return render_template("dashboard.html", admin=admin)
 
 
 @app.route("/login")

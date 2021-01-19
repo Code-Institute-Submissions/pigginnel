@@ -1,7 +1,7 @@
 
 import os
 import pymongo
-from flask import Flask, render_template, g, redirect, url_for
+from flask import Flask, render_template, g, redirect, url_for, request, session, flash
 from flask_oidc import OpenIDConnect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -45,6 +45,22 @@ def index():
 def dashboard():
     admin = os.environ.get("ADMIN")
     return render_template("dashboard.html", admin=admin)
+
+
+@app.route("/add_review", methods=["POST"])
+def add_review():
+    if request.method == "POST":
+        review = {
+            "firstName": g.user.profile.firstName,
+            "lastName": g.user.profile.lastName,
+            "email": g.user.profile.email,
+            "stars": request.form.get("stars"),
+            "review": request.form.get("review")
+        }
+        mongo.db.reviews.insert_one(review)
+        flash("Task Successfully Added")
+        return redirect(url_for("dashboard"))
+    return render_template("dashboard.html")
 
 
 @app.route("/login")

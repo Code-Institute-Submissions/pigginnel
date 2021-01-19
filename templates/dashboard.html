@@ -6,13 +6,29 @@
 <p>worked</p>
 <p>worked</p>
 <p>worked</p>
-<p> worked</p>
+<p>Welcome back {{ g.user.profile.firstName }}</p>
+
 {% else %}
 <p>Not worked</p>
 <p>Not worked</p>
 <p>Not worked</p>
-<p>Not worked ever</p>
+<p>Welcome {{ g.user.profile.firstName }}</p>
 
+<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">Want to leave a review?</button>
+<div id="reviewModal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <form method="POST" action="{{ url_for('add_review') }}">
+            <label for="stars">How many Stars would you give your meal?</label><br/>
+            <input class ="uk-range" type="range" value="3" min="1" max="5" step="1" id="stars" name="stars" required/><br/><br/>
+            <label for="review">How was your meal?</label><br/>
+            <input type="text" id="review" name="review" required/><br/><br/>
+            
+        </form>
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="submit">Save</button>
+        </p>
+    </div>
+</div>
 {% endif %}
 
 {% endblock %}

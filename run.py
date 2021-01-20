@@ -1,10 +1,12 @@
 
 import os
 import pymongo
-from flask import Flask, render_template, g, redirect, url_for, request, session, flash
+from flask import (Flask, render_template, g, redirect,
+                   url_for, request, session, flash)
 from flask_oidc import OpenIDConnect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from datetime import date
 from okta import UsersClient
 if os.path.exists("env.py"):
     import env
@@ -44,16 +46,23 @@ def index():
 @oidc.require_login
 def dashboard():
     admin = os.environ.get("ADMIN")
-    return render_template("dashboard.html", admin=admin)
+    user = g.user.profile.email
+    user_review = list(mongo.db.reviews.find(
+            {"email": user}))
+    return render_template("dashboard.html",
+                           admin=admin,
+                           user_review=user_review)
 
 
 @app.route("/add_review", methods=["POST"])
 def add_review():
     if request.method == "POST":
+        today = date.today()
         review = {
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
+            "date": today.strftime("%d/%m/%Y"),
             "stars": request.form.get("stars"),
             "review": request.form.get("review")
         }

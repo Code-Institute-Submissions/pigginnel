@@ -94,3 +94,20 @@ a:hover {
     padding-bottom: 5em;
     scroll-margin-top: 10em;
 }
+
+#user_review_stars {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.starTitle {
+    text-align: center;
+}
+
+.reviewCards {
+    padding-left: 0px;
+    margin-left: 5vw;
+    margin-bottom: 2em;
+    margin-right: 5vw;
+    max-width: 90%;
+}

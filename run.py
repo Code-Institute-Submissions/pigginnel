@@ -72,6 +72,23 @@ def add_review():
     return render_template("dashboard.html")
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        today = date.today()
+        submit = {
+            "firstName": g.user.profile.firstName,
+            "lastName": g.user.profile.lastName,
+            "email": g.user.profile.email,
+            "date": today.strftime("%d/%m/%Y"),
+            "stars": request.form.get("stars"),
+            "review": request.form.get("review")
+        }
+        mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+        flash("Review Successfully Updated")
+    return redirect(url_for("dashboard"))
+
+
 @app.route("/login")
 @oidc.require_login
 def login():

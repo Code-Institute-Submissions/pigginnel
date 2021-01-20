@@ -42,8 +42,17 @@
                 <p>{{ review.review }}</p>
             </div>
             <div class="uk-card-footer">
-                <a href="#" class="uk-button uk-button-text">Edit this Review</a>
+                <a href="#edit_review_modal" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
                 <a href="#" class="uk-button uk-button-text">Delete this Review</a>
+            </div>
+        </div>
+
+        <div id="edit_review_modal" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Headline</h2>
+                {% include 'edit_review.html' %}
+                <p class="uk-text-right">
+                </p>
             </div>
         </div>
         {% endfor %}

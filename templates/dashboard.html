@@ -43,7 +43,7 @@
             </div>
             <div class="uk-card-footer">
                 <a href="#edit_review_modal" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
-                <a href="#" class="uk-button uk-button-text">Delete this Review</a>
+                <a href="{{ url_for('delete_review', review_id=review._id) }}" class="uk-button uk-button-text">Delete this Review</a>
             </div>
         </div>
 

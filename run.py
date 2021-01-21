@@ -49,9 +49,11 @@ def dashboard():
     user = g.user.profile.email
     user_review = list(mongo.db.reviews.find(
             {"email": user}))
+    admin_review = list(mongo.db.reviews.find({}))
     return render_template("dashboard.html",
                            admin=admin,
-                           user_review=user_review)
+                           user_review=user_review,
+                           admin_review=admin_review)
 
 
 @app.route("/add_review", methods=["POST"])
@@ -85,14 +87,14 @@ def edit_review(review_id):
             "review": request.form.get("review")
         }
         mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
-        flash("Review Successfully Updated")
+        flash("Your Review Has Been Updated", 'update')
     return redirect(url_for("dashboard"))
 
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     mongo.db.reviews.remove({"_id": ObjectId(review_id)})
-    flash("Review Successfully Deleted")
+    flash("Your Review Was Deleted", 'update')
     return redirect(url_for("dashboard"))
 
 

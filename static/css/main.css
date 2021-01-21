@@ -37,6 +37,9 @@ a:hover {
     margin-bottom: 1em;
 }
 
+.update {
+    color: red
+}
 /*-------------------------------- Hero Section -------------------- */
 
 .heroimage {

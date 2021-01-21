@@ -1,0 +1,49 @@
+<div class="userReviews">
+    <div class="uk-card uk-card-default uk-width-1-2@m reviewCards">
+        <div class="uk-card-header">
+            <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                <div class="uk-width-expand starTitle">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        {% if review.stars == "1" %}
+                        <img style="max-width: 30%" src="static/img/1star.png" id="user_review_stars" alt="PNG of 1 Star">
+                        {% elif review.stars == "2" %}
+                        <img style="max-width: 30%" src="static/img/2star.png" id="user_review_stars" alt="PNG of 2 Star">
+                        {% elif review.stars == "3" %}
+                        <img style="max-width: 30%" src="static/img/3star.png" id="user_review_stars" alt="PNG of 3 Star">
+                        {% elif review.stars == "4" %}
+                        <img style="max-width: 30%" src="static/img/4star.png" id="user_review_stars" alt="PNG of 4 Star">
+                        {% elif review.stars == "5" %}
+                        <img style="max-width: 30%" src="static/img/5star.png" id="user_review_stars" alt="PNG of 5 Star">
+                        {% endif %}</h3>
+                    <p class="uk-text-meta uk-margin-remove-top review_date">{{ review.date }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            {% if g.user.profile.email == admin %}
+            <p>{{ review.firstName }} {{ review.lastName }} had this to say:</p>
+            {% else %}
+            <p>You said the following about your meal:</p>
+            {% endif %}
+            <p>{{ review.review }}</p>
+            {% if g.user.profile.email == admin %}
+            <p>Contact them at {{ review.email }}</p>
+            {% endif %}
+        </div>
+        <div class="uk-card-footer">
+            {% if g.user.profile.email != admin %}
+            <a href="#edit_review_modal" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
+            {% endif %}
+            <a href="{{ url_for('delete_review', review_id=review._id) }}" class="uk-button uk-button-text">Delete this Review</a>
+        </div>
+    </div>
+
+    <div id="edit_review_modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Headline</h2>
+            {% include 'edit_review.html' %}
+            <p class="uk-text-right">
+            </p>
+        </div>
+    </div>
+</div>

@@ -7,56 +7,38 @@
 <p>worked</p>
 <p>worked</p>
 <p>Welcome back {{ g.user.profile.firstName }}</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endwith %}
+
+<section>
+{% for review in admin_review %}
+  
+{% include 'dashboard_reviews.html' %}
+
+{% endfor %}
+</section>
 
 {% else %}
 <p>Not worked</p>
 <p>Not worked</p>
 <p>Not worked</p>
 <p>Welcome {{ g.user.profile.firstName }}</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endwith %}
 
 <section>
     {% for review in user_review %}
-    <div class="userReviews">
-        <div class="uk-card uk-card-default uk-width-1-2@m reviewCards">
-            <div class="uk-card-header">
-                <div class="uk-grid-medium uk-flex-middle" uk-grid>
-                    <div class="uk-width-expand starTitle">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">
-                            {% if review.stars == "1" %}
-                            <img style="max-width: 30%" src="static/img/1star.png" id="user_review_stars" alt="PNG of 1 Star">
-                            {% elif review.stars == "2" %}
-                            <img style="max-width: 30%" src="static/img/2star.png" id="user_review_stars" alt="PNG of 2 Star">
-                            {% elif review.stars == "3" %}
-                            <img style="max-width: 30%" src="static/img/3star.png" id="user_review_stars" alt="PNG of 3 Star">
-                            {% elif review.stars == "4" %}
-                            <img style="max-width: 30%" src="static/img/4star.png" id="user_review_stars" alt="PNG of 4 Star">
-                            {% elif review.stars == "5" %}
-                            <img style="max-width: 30%" src="static/img/5star.png" id="user_review_stars" alt="PNG of 5 Star">
-                            {% endif %}</h3>
-                        <p class="uk-text-meta uk-margin-remove-top review_date">{{ review.date }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-card-body">
-                <p>You said the following about your meal:</p>
-                <p>{{ review.review }}</p>
-            </div>
-            <div class="uk-card-footer">
-                <a href="#edit_review_modal" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
-                <a href="{{ url_for('delete_review', review_id=review._id) }}" class="uk-button uk-button-text">Delete this Review</a>
-            </div>
-        </div>
+      
+    {% include 'dashboard_reviews.html' %}
+    
+    {% endfor %}
 
-        <div id="edit_review_modal" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body">
-                <h2 class="uk-modal-title">Headline</h2>
-                {% include 'edit_review.html' %}
-                <p class="uk-text-right">
-                </p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
 </section>
 
 <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">Want to
@@ -75,6 +57,7 @@
 
     </div>
 </div>
+
 {% endif %}
 
 {% endblock %}

@@ -121,3 +121,23 @@ a:hover {
     margin-top: 3vh;
     margin-left: 2%;
 }
+
+#reviewModal {
+text-align: center;
+}
+
+#edit_review_section {
+    margin-top: 3vh;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#editStars {
+    max-width: 25%;
+}
+
+#selectStars {
+    max-width: 90%;
+}
+

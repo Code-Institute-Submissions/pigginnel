@@ -1,33 +1,35 @@
-
 {% extends "base.html" %}
-
 {% block content %}
-        <div class="uk-card uk-card-default uk-width-1-2@m">
-            <div class="uk-card-header">
-                <div class="uk-grid-small uk-flex-middle" uk-grid>
-                    <div class="uk-width-auto">
-                        <img class="uk-border-circle" width="40" height="40" src="images/avatar.jpg">
-                    </div>
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">Update your Review</h3>
-                        <p>Review from:</p><p class="uk-text-meta uk-margin-remove-top">{{ review.date }}</p>
-                    </div>
+<section id="edit_review_section">
+    <div class="uk-card uk-card-default editReview">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">Update your Review</h3>
+                    <p>Review from:</p>
+                    <p class="uk-text-meta uk-margin-remove-top">{{ review.date }}</p>
                 </div>
             </div>
-            <div class="uk-card-body">
-                <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
-                    <label for="stars">How many Stars would you give your meal?</label><br />
-                    <input class="uk-range" type="range" value="{{ review.stars }}" min="1" max="5" step="1" id="stars" name="stars"
-                        required /><br /><br />
-                    <label for="review">How was your meal?</label>
-                    <textarea class="uk-textarea" rows="5" id="review" name="review" placeholder="{{ review.review }}"required></textarea><br /><br />
-                    <div class="uk-card-footer">
-                        <a class="uk-button uk-button-default uk-modal-close" href="{{ url_for('dashboard') }}">Cancel</a>
-                        <button class="uk-button uk-button-primary" type="submit">Save</button>
-                    </div>  
-                </form>
-            </div>
-            
         </div>
+        <div class="uk-card-body">
+            <form method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
+                <div class="uk-margin">
+                    <label class="starsTitle" for="stars">How many Stars would you give your meal?</label><br />
+                </div>
+                <img src="{{url_for('static', filename='/img/5star.png')}}" style="max-width: 30%;" align="middle" class=refStars /><br />
+                <input class="uk-range" style="width: 81%" type="range" value="{{ review.stars }}" min="1" max="5"
+                    step="1" id="editStars" name="stars" required /><br /><br />
+                <label for="review">How was your meal?</label>
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" id="review" name="review" placeholder="{{ review.review }}"
+                        required></textarea></textarea><br /><br />
+                </div>
+                <div class="uk-card-footer">
+                    <a class="uk-button uk-button-default uk-modal-close" href="{{ url_for('dashboard') }}">Cancel</a>
+                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock %}
-

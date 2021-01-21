@@ -5,15 +5,20 @@
                 <div class="uk-width-expand starTitle">
                     <h3 class="uk-card-title uk-margin-remove-bottom">
                         {% if review.stars == "1" %}
-                        <img style="max-width: 30%" src="static/img/1star.png" id="user_review_stars" alt="PNG of 1 Star">
+                        <img style="max-width: 30%" src="static/img/1star.png" id="user_review_stars"
+                            alt="PNG of 1 Star">
                         {% elif review.stars == "2" %}
-                        <img style="max-width: 30%" src="static/img/2star.png" id="user_review_stars" alt="PNG of 2 Star">
+                        <img style="max-width: 30%" src="static/img/2star.png" id="user_review_stars"
+                            alt="PNG of 2 Star">
                         {% elif review.stars == "3" %}
-                        <img style="max-width: 30%" src="static/img/3star.png" id="user_review_stars" alt="PNG of 3 Star">
+                        <img style="max-width: 30%" src="static/img/3star.png" id="user_review_stars"
+                            alt="PNG of 3 Star">
                         {% elif review.stars == "4" %}
-                        <img style="max-width: 30%" src="static/img/4star.png" id="user_review_stars" alt="PNG of 4 Star">
+                        <img style="max-width: 30%" src="static/img/4star.png" id="user_review_stars"
+                            alt="PNG of 4 Star">
                         {% elif review.stars == "5" %}
-                        <img style="max-width: 30%" src="static/img/5star.png" id="user_review_stars" alt="PNG of 5 Star">
+                        <img style="max-width: 30%" src="static/img/5star.png" id="user_review_stars"
+                            alt="PNG of 5 Star">
                         {% endif %}</h3>
                     <p class="uk-text-meta uk-margin-remove-top review_date">{{ review.date }}</p>
                 </div>
@@ -32,9 +37,11 @@
         </div>
         <div class="uk-card-footer">
             {% if g.user.profile.email != admin %}
-            <a href="{{ url_for('edit_review', review_id=review._id) }}" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
+            <a href="{{ url_for('edit_review', review_id=review._id) }}" class="uk-button uk-button-text" uk-toggle>
+                Edit this Review</a>
             {% endif %}
-            <a href="{{ url_for('delete_review', review_id=review._id) }}" class="uk-button uk-button-text">Delete this Review</a>
+            <a href="{{ url_for('delete_review', review_id=review._id) }}" class="uk-button uk-button-text">
+                Delete this Review</a>
         </div>
     </div>
 </div>

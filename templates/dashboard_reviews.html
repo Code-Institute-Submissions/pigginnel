@@ -32,18 +32,9 @@
         </div>
         <div class="uk-card-footer">
             {% if g.user.profile.email != admin %}
-            <a href="#edit_review_modal" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
+            <a href="{{ url_for('edit_review', review_id=review._id) }}" class="uk-button uk-button-text" uk-toggle>Edit this Review</a>
             {% endif %}
             <a href="{{ url_for('delete_review', review_id=review._id) }}" class="uk-button uk-button-text">Delete this Review</a>
-        </div>
-    </div>
-
-    <div id="edit_review_modal" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
-            <h2 class="uk-modal-title">Headline</h2>
-            {% include 'edit_review.html' %}
-            <p class="uk-text-right">
-            </p>
         </div>
     </div>
 </div>

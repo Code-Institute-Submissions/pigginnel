@@ -2,62 +2,52 @@
 
 {% block content %}
 
-{% if g.user.profile.email == admin %}
-<p>worked</p>
-<p>worked</p>
-<p>worked</p>
-<p>Welcome back {{ g.user.profile.firstName }}</p>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% for category, message in messages %}
-    <div class="{{ category }}">{{ message }}</div>
-    {% endfor %}
-    {% endwith %}
+<section id = "dash_review">
+    {% if g.user.profile.email == admin %}
+    <p>Welcome back {{ g.user.profile.firstName }}</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
 
-<section>
-{% for review in admin_review %}
-  
-{% include 'dashboard_reviews.html' %}
+        {% for review in admin_review %}
+        
+        {% include 'dashboard_reviews.html' %}
 
-{% endfor %}
-</section>
+        {% endfor %}
 
-{% else %}
-<p>Not worked</p>
-<p>Not worked</p>
-<p>Not worked</p>
-<p>Welcome {{ g.user.profile.firstName }}</p>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% for category, message in messages %}
-    <div class="{{ category }}">{{ message }}</div>
-    {% endfor %}
-    {% endwith %}
+    {% else %}
+    <p>Welcome {{ g.user.profile.firstName }}</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
 
-<section>
-    {% for review in user_review %}
-      
-    {% include 'dashboard_reviews.html' %}
-    
-    {% endfor %}
+        {% for review in user_review %}
+        
+        {% include 'dashboard_reviews.html' %}
 
-</section>
+        {% endfor %}
 
-<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">Want to
-    leave a review?</button>
-<div id="reviewModal" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <form method="POST" action="{{ url_for('add_review') }}">
-            <label for="stars">How many Stars would you give your meal?</label><br />
-            <input class="uk-range" type="range" value="3" min="1" max="5" step="1" id="stars" name="stars"
-                required /><br /><br />
-            <label for="review">How was your meal?</label><br />
-            <input type="text" id="review" name="review" required /><br /><br />
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="submit">Save</button>
-        </form>
-
+    <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">Want to
+        leave a review?</button>
+    <div id="reviewModal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <form method="POST" action="{{ url_for('add_review') }}">
+                <label for="stars">How many Stars would you give your meal?</label><br />
+                <input class="uk-range" type="range" value="3" min="1" max="5" step="1" id="review_stars" name="stars"
+                    required /><br /><br />
+                <div class="uk-margin">
+                    <textarea class="uk-textarea review_text" name="review" rows="5" placeholder="How was your meal?" required></textarea>
+                </div>
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="submit">Save</button>
+            </form>
+        </div>
     </div>
-</div>
 
-{% endif %}
-
+    {% endif %}
+</section>
 {% endblock %}

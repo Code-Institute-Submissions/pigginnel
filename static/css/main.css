@@ -88,7 +88,7 @@ a:hover {
     margin-right: 3vw;
 }
 
-/*-------------------------------- Menu Section -------------------- */
+/*-------------------------------- Review Cards -------------------- */
 
 #reviews {
     padding-top: 2em;
@@ -113,4 +113,11 @@ a:hover {
     margin-bottom: 2em;
     margin-right: 5vw;
     max-width: 90%;
+}
+
+/*-------------------------------- Dashboard -------------------- */
+
+#dash_review {
+    margin-top: 3vh;
+    margin-left: 2%;
 }

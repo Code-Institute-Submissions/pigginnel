@@ -56,7 +56,7 @@ def dashboard():
                            admin_review=admin_review)
 
 
-@app.route("/add_review", methods=["POST"])
+@app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
         today = date.today()
@@ -86,9 +86,12 @@ def edit_review(review_id):
             "stars": request.form.get("stars"),
             "review": request.form.get("review")
         }
-        mongo.db.reviews.update({"_id": ObjectId(review_id)}, submit)
+        mongo.db.reviews.replace_one({"_id": ObjectId(review_id)}, submit)
         flash("Your Review Has Been Updated", 'update')
-    return redirect(url_for("dashboard"))
+        return redirect(url_for("dashboard"))
+
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template("edit_review.html", review=review)
 
 
 @app.route("/delete_review/<review_id>")

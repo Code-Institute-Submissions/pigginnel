@@ -22,7 +22,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config["OIDC_ID_TOKEN_COOKIE_NAME"] = "oidc_token"
 oidc = OpenIDConnect(app)
-okta_client = UsersClient("https://dev-9604636.okta.com",
+okta_client = UsersClient("https://dev-5976059.okta.com",
                           os.environ.get("AUTH_TOKEN"))
 
 mongo = PyMongo(app)

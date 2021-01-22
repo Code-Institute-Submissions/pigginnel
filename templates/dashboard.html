@@ -8,65 +8,65 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% for category, message in messages %}
     <div class="{{ category }}">{{ message }}</div>
-    {% endfor %}
-    {% endwith %}
+{% endfor %}
+{% endwith %}
 
-    {% for review in admin_review %}
+{% for review in admin_review %}
 
-    {% include 'dashboard_reviews.html' %}
+{% include 'dashboard_reviews.html' %}
 
-    {% endfor %}
+{% endfor %}
 
-    {% else %}
-    <p>Welcome {{ g.user.profile.firstName }}</p>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% for category, message in messages %}
-    <div class="{{ category }}">{{ message }}</div>
-    {% endfor %}
-    {% endwith %}
+{% else %}
+<p>Welcome {{ g.user.profile.firstName }}</p>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% for category, message in messages %}
+<div class="{{ category }}">{{ message }}</div>
+{% endfor %}
+{% endwith %}
 
-    {% for review in user_review %}
+{% for review in user_review %}
 
-    {% include 'dashboard_reviews.html' %}
+{% include 'dashboard_reviews.html' %}
 
-    {% endfor %}
-    <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">
-        Want to leave a review?
-    </button>
-    
-    <div id="reviewModal" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body">
-          <div class="uk-card uk-card-default editReview">
-              <div class="uk-card-header">
-                  <div class="uk-grid-small uk-flex-middle" uk-grid>
-                      <div class="uk-width-expand">
-                          <h3 class="uk-card-title uk-margin-remove-bottom">How did we do?</h3>
-                      </div>
-                  </div>
-              </div>
-              <div class="uk-card-body">
-                    <form method="POST" action="{{ url_for('add_review') }}">
-                      <div class="uk-margin">
-                          <label class="starsTitle" for="stars">How many Stars would you give your meal?</label><br />
-                      </div>
-                      <img src="{{url_for('static', filename='/img/5star.png')}}" align="middle" class=refStars />
-                      <input class="uk-range" style="width: 81%" type="range" value="3" min="1" max="5"
-                          step="1" id="selectStars" name="stars" required /><br /><br />
-                      <label for="review">How was your meal?</label>
-                      <div class="uk-margin">
-                        <textarea class="uk-textarea" rows="5" id="review" name="review" 
-                        placeholder="What did we do well, and what can we do to improve?"
+{% endfor %}
+<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">
+    Want to leave a review?
+</button>
+
+<div id="reviewModal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-card uk-card-default editReview">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">How did we do?</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-card-body">
+                <form method="POST" action="{{ url_for('add_review') }}">
+                    <div class="uk-margin">
+                        <label class="starsTitle" for="stars">How many Stars would you give your meal?</label><br />
+                    </div>
+                    <img src="{{url_for('static', filename='/img/5star.png')}}" align="middle" class=refStars />
+                    <input class="uk-range" style="width: 81%" type="range" value="3" min="1" max="5" step="1"
+                        id="selectStars" name="stars" required /><br /><br />
+                    <label for="review">How was your meal?</label>
+                    <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" id="review" name="review"
+                            placeholder="What did we do well, and what can we do to improve?"
                             required></textarea></textarea><br /><br />
-                        </div>
-                      <div class="uk-card-footer">
+                    </div>
+                    <div class="uk-card-footer">
                         <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
                         <button class="uk-button uk-button-primary" type="submit">Save</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
-    {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 </section>
 {% endblock %}

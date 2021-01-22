@@ -16,7 +16,8 @@
                 <div class="uk-margin">
                     <label class="starsTitle" for="stars">How many Stars would you give your meal?</label><br />
                 </div>
-                <img src="{{url_for('static', filename='/img/5star.png')}}" style="max-width: 30%;" align="middle" class=refStars /><br />
+                <img src="{{url_for('static', filename='/img/5star.png')}}" style="max-width: 30%;" align="middle"
+                    class=refStars /><br />
                 <input class="uk-range" style="width: 81%" type="range" value="{{ review.stars }}" min="1" max="5"
                     step="1" id="editStars" name="stars" required /><br /><br />
                 <label for="review">How was your meal?</label>

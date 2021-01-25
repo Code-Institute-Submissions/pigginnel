@@ -75,6 +75,7 @@ def add_review():
 
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+@oidc.require_login
 def edit_review(review_id):
     if request.method == "POST":
         today = date.today()

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script>
+    $( function() {
+      $( "#datepicker" ).datepicker({ minDate: +1, maxDate: "+1M +10D" });
+      $( "#datepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
+    } );
+</script>
 
 <section id="dash_review">
     {% if g.user.profile.email == admin %}
@@ -30,6 +36,33 @@
 {% include 'dashboard_reviews.html' %}
 
 {% endfor %}
+<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reservationModal">
+    Book a Reservation
+</button>
+
+<div id="reservationModal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-card uk-card-default editReview">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-card-body">
+                <form method="POST" action="{{ url_for('add_reservation') }}">
+                    <p>Date: <input name="date" type="text" id="datepicker"></p>
+                    <div class="uk-card-footer">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                        <button class="uk-button uk-button-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">
     Want to leave a review?
 </button>

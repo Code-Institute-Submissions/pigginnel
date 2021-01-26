@@ -56,6 +56,21 @@ def dashboard():
                            admin_review=admin_review)
 
 
+@app.route("/add_reservation", methods=["GET", "POST"])
+def add_reservation():
+    if request.method == "POST":
+        reservation = {
+            "firstName": g.user.profile.firstName,
+            "lastName": g.user.profile.lastName,
+            "email": g.user.profile.email,
+            "date": request.form.get("date")
+        }
+        mongo.db.reservations.insert_one(reservation)
+        flash("Reservation Successfully Booked")
+        return redirect(url_for("dashboard"))
+    return render_template("dashboard.html")
+
+
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     if request.method == "POST":
@@ -69,7 +84,7 @@ def add_review():
             "review": request.form.get("review")
         }
         mongo.db.reviews.insert_one(review)
-        flash("Task Successfully Added")
+        flash("Review Successfully Added")
         return redirect(url_for("dashboard"))
     return render_template("dashboard.html")
 

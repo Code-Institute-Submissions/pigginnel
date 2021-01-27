@@ -63,11 +63,25 @@ def add_reservation():
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
-            "date": request.form.get("date")
+            "date": request.form.get("date"),
+            "slot": request.form.get("slot"),
+            "covers": request.form.get("covers"),
+            "requirements": request.form.get("requirements")
         }
-        mongo.db.reservations.insert_one(reservation)
-        flash("Reservation Successfully Booked")
-        return redirect(url_for("dashboard"))
+        date_slot_query = {"date": request.form.get("date"),
+                           "slot": request.form.get("slot")}
+        existing_reservations = mongo.db.reservations.find(date_slot_query)
+        cover_count = sum(
+            [int(reservation["covers"])
+             for reservation in existing_reservations]
+            + [int(request.form.get("covers"))])
+        if cover_count < 30:
+            mongo.db.reservations.insert_one(reservation)
+            flash("Reservation successfully booked")
+            return redirect(url_for("dashboard"))
+        else:
+            flash("Sorry, that slot is fully booked for your amount of guests")
+            return redirect(url_for("dashboard"))
     return render_template("dashboard.html")
 
 

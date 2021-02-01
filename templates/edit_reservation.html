@@ -1,7 +1,29 @@
 {% extends "base.html" %}
         
 {% block content %}
-
-
+            <div class="uk-card-body">
+                <form method="POST" action="{{ url_for('edit_reservation', reservation_id=reservation._id) }}">
+                    <p>Date: <input name="date" type="text" id="datepicker"></p>
+                    <div class="uk-margin">
+                        <select name="slot" class="uk-select">
+                            <option>14:00-17:00</option>
+                            <option>18:30-21:30</option>
+                        </select>
+                    </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" name="covers" type="text" placeholder="How many guests?">
+                    </div>
+                    <div class="uk-margin">
+                        <textarea class="uk-textarea" rows="5" id="requirements" name="requirements"
+                            placeholder="Any special requirements? Or is this a special occasion?"
+                        ></textarea></textarea><br /><br />
+                    </div>
+                    <div class="uk-card-footer">
+                        <a class="uk-button uk-button-default uk-modal-close" href="{{ url_for('dashboard') }}">Cancel</a>
+                        <button class="uk-button uk-button-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        
 {% endblock %}
         

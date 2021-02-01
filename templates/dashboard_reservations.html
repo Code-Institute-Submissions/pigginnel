@@ -1,0 +1,29 @@
+<div class="userReservation">
+    <div class="uk-card uk-card-default reviewCards">
+        <div class="uk-card-header">
+            <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        <div class="uk-card-header">
+                            {% if g.user.profile.email == admin %}
+                            <p>Name of lead guest: {{ reservation.firstName }} {{ reservation.lastName }}</p>
+                            <p>Contact them at {{ reservation.email }}</p>
+                            {% endif %}
+                            </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p class="uk-text-meta uk-margin-remove-top review_date">{{ reservation.date }}</p>
+            <p class="uk-text-meta uk-margin-remove-top review_date">{{ reservation.slot }}</p>
+        </div>
+        <div class="uk-card-footer">
+            {% if g.user.profile.email != admin %}
+            <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text" uk-toggle>
+                Edit this Reservation</a>
+            {% endif %}
+            <a href="" class="uk-button uk-button-text">
+                Cancel this Reservation</a>
+        </div>
+    </div>
+</div>

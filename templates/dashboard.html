@@ -31,11 +31,6 @@
 {% endfor %}
 {% endwith %}
 
-{% for review in user_review %}
-
-{% include 'dashboard_reviews.html' %}
-
-{% endfor %}
 <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reservationModal">
     Book a Reservation
 </button>
@@ -112,6 +107,24 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="uk-grid">
+
+    <div class="uk-width-1-2">
+    {% for review in user_review %}
+
+    {% include 'dashboard_reviews.html' %}
+
+    {% endfor %}
+    </div>
+    <div class="uk-width-1-2">
+    {% for reservation in user_reservation %}
+
+    {% include 'dashboard_reservations.html' %}
+
+    {% endfor %}
     </div>
 </div>
 {% endif %}

@@ -49,11 +49,16 @@ def dashboard():
     user = g.user.profile.email
     user_review = list(mongo.db.reviews.find(
             {"email": user}))
+    user_reservation = list(mongo.db.reservations.find(
+            {"email": user}))
     admin_review = list(mongo.db.reviews.find({}))
+    admin_reservation = list(mongo.db.reservations.find({}))
     return render_template("dashboard.html",
                            admin=admin,
                            user_review=user_review,
-                           admin_review=admin_review)
+                           user_reservation=user_reservation,
+                           admin_review=admin_review,
+                           admin_reservation=admin_reservation)
 
 
 @app.route("/add_reservation", methods=["GET", "POST"])
@@ -83,6 +88,37 @@ def add_reservation():
             flash("Sorry, that slot is fully booked for your amount of guests")
             return redirect(url_for("dashboard"))
     return render_template("dashboard.html")
+
+
+@app.route("/edit_reservation/<reservation_id>", methods=["GET", "POST"])
+@oidc.require_login
+def edit_reservation(reservation_id):
+    if request.method == "POST":
+        submit = {
+            "firstName": g.user.profile.firstName,
+            "lastName": g.user.profile.lastName,
+            "email": g.user.profile.email,
+            "date": request.form.get("date"),
+            "slot": request.form.get("slot"),
+            "covers": request.form.get("covers"),
+            "requirements": request.form.get("requirements")
+        }
+        date_slot_query = {"date": request.form.get("date"),
+                           "slot": request.form.get("slot")}
+        existing_reservations = mongo.db.reservations.find(date_slot_query)
+        cover_count = sum(
+            [int(reservation["covers"])
+             for reservation in existing_reservations]
+            + [int(request.form.get("covers"))])
+        if cover_count < 30:
+            mongo.db.reservations.replace_one({"_id": ObjectId(reservation_id)}, submit)
+            flash("Your Reservation Has Been Updated", 'update')
+            return redirect(url_for("dashboard"))
+        else:
+            flash("Sorry, that slot is fully booked for your amount of guests")
+            return redirect(url_for("dashboard"))
+    reservation = mongo.db.reservations.find_one({"_id": ObjectId(reservation_id)})
+    return render_template("edit_reservation.html", reservation=reservation)
 
 
 @app.route("/add_review", methods=["GET", "POST"])

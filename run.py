@@ -1,6 +1,7 @@
 
 import os
 import pymongo
+import datetime
 from flask import (Flask, render_template, g, redirect,
                    url_for, request, session, flash)
 from flask_oidc import OpenIDConnect
@@ -48,9 +49,9 @@ def dashboard():
     admin = os.environ.get("ADMIN")
     user = g.user.profile.email
     user_review = list(mongo.db.reviews.find(
-            {"email": user}))
+            {"email": user}).sort("_id", pymongo.DESCENDING))
     user_reservation = list(mongo.db.reservations.find(
-            {"email": user}))
+            {"email": user}).sort("date", pymongo.ASCENDING))
     admin_review = list(mongo.db.reviews.find({}))
     admin_reservation = list(mongo.db.reservations.find({}))
     return render_template("dashboard.html",
@@ -68,7 +69,8 @@ def add_reservation():
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
-            "date": request.form.get("date"),
+            "date": datetime.datetime.strptime(request.form.get("date"), "%d-%m-%Y"),
+            "shown_date": request.form.get("date"),
             "slot": request.form.get("slot"),
             "covers": request.form.get("covers"),
             "requirements": request.form.get("requirements")
@@ -98,7 +100,8 @@ def edit_reservation(reservation_id):
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
-            "date": request.form.get("date"),
+            "date": datetime.datetime.strptime(request.form.get("date")),
+            "shown_date": request.form.get("date"),
             "slot": request.form.get("slot"),
             "covers": request.form.get("covers"),
             "requirements": request.form.get("requirements")

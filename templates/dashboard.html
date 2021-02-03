@@ -8,7 +8,7 @@
     } );
 </script>
 
-<section id="dash_review">
+<section id="dash_review" onload="correctTheDate()">
     {% if g.user.profile.email == admin %}
     <p>Welcome back {{ g.user.profile.firstName }}</p>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -47,7 +47,7 @@
             </div>
             <div class="uk-card-body">
                 <form method="POST" action="{{ url_for('add_reservation') }}">
-                    <p>Date: <input name="date" type="text" id="datepicker"></p>
+                    <p>Date: <input name="date" type="text" id="datepicker" pattern="^(0[1-9]|[1-9]|1[012])\-(0[1-9]|[1-9]|[12][0-9]|3[01])\-(19|20)\d\d$"></p>
                     <div class="uk-margin">
                         <select name="slot" class="uk-select">
                             <option>14:00-17:00</option>

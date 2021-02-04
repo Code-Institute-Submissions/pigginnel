@@ -1,13 +1,12 @@
 
 import os
 import pymongo
-import datetime
 from flask import (Flask, render_template, g, redirect,
                    url_for, request, session, flash)
 from flask_oidc import OpenIDConnect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from datetime import date
+from datetime import datetime, date
 from okta import UsersClient
 if os.path.exists("env.py"):
     import env
@@ -40,6 +39,9 @@ def before_request():
 @app.route("/")
 def index():
     reviews = mongo.db.reviews.aggregate([{'$sample': {'size': 3}}])
+    today = date.today()
+    mongo.db.reservations.delete_many({"date": {"$lt": int(today.strftime("%Y%m%d"))}})
+    print({"date": {"$lt": today.strftime("%Y%m%d")}})
     return render_template("index.html", reviews=reviews)
 
 
@@ -65,11 +67,16 @@ def dashboard():
 @app.route("/add_reservation", methods=["GET", "POST"])
 def add_reservation():
     if request.method == "POST":
+        booked_date = request.form.get("date")
+        date_day = booked_date[0:2]
+        date_month = booked_date[3:5]
+        date_year = booked_date[6:10]
+        int_date = date_year + date_month + date_day
         reservation = {
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
-            "date": datetime.datetime.strptime(request.form.get("date"), "%d-%m-%Y"),
+            "date": int(int_date),
             "shown_date": request.form.get("date"),
             "slot": request.form.get("slot"),
             "covers": request.form.get("covers"),
@@ -100,7 +107,7 @@ def edit_reservation(reservation_id):
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
-            "date": datetime.datetime.strptime(request.form.get("date")),
+            "date": int(datetime.datetime.strptime(request.form.get("date"))),
             "shown_date": request.form.get("date"),
             "slot": request.form.get("slot"),
             "covers": request.form.get("covers"),

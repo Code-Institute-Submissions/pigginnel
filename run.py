@@ -40,7 +40,8 @@ def before_request():
 def index():
     reviews = mongo.db.reviews.aggregate([{'$sample': {'size': 3}}])
     today = date.today()
-    mongo.db.reservations.delete_many({"date": {"$lt": int(today.strftime("%Y%m%d"))}})
+    mongo.db.reservations.delete_many({"date":
+                                      {"$lt": int(today.strftime("%Y%m%d"))}})
     print({"date": {"$lt": today.strftime("%Y%m%d")}})
     return render_template("index.html", reviews=reviews)
 
@@ -126,13 +127,16 @@ def edit_reservation(reservation_id):
              for reservation in existing_reservations]
             + [int(request.form.get("covers"))])
         if cover_count < 30:
-            mongo.db.reservations.replace_one({"_id": ObjectId(reservation_id)}, submit)
+            mongo.db.reservations.replace_one({"_id":
+                                               ObjectId(reservation_id)},
+                                              submit)
             flash("Your Reservation Has Been Updated", 'update')
             return redirect(url_for("dashboard"))
         else:
             flash("Sorry, that slot is fully booked for your amount of guests")
             return redirect(url_for("dashboard"))
-    reservation = mongo.db.reservations.find_one({"_id": ObjectId(reservation_id)})
+    reservation = mongo.db.reservations.find_one({"_id":
+                                                  ObjectId(reservation_id)})
     return render_template("edit_reservation.html", reservation=reservation)
 
 

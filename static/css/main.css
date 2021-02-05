@@ -107,19 +107,12 @@ a:hover {
     text-align: center;
 }
 
-.reviewCards {
-    padding-left: 0px;
-    margin-left: 5vw;
-    margin-bottom: 2em;
-    margin-right: 5vw;
-    max-width: 90%;
-}
-
 /*-------------------------------- Dashboard -------------------- */
 
-#dash_review {
-    margin-top: 3vh;
-    margin-left: 2%;
+#dashboard {
+    margin-top: 7vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
 #reviewModal {
@@ -129,8 +122,6 @@ text-align: center;
 #edit_review_section {
     margin-top: 3vh;
     text-align: center;
-    margin-left: 25%;
-    margin-right: 25%;
 }
 
 #editStars {
@@ -141,3 +132,24 @@ text-align: center;
     max-width: 90%;
 }
 
+.userReservation, .userReviews {
+    margin-bottom: 2em;
+}
+
+.buttonReservation {
+    display: flex;
+    margin-left: -2vw;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.buttonReview { 
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -1vw;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.reservation_date {
+    text-align: center;
+}

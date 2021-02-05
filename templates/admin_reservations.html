@@ -5,20 +5,20 @@
                 <div class="uk-width-expand">
                     <h3 class="uk-card-title uk-margin-remove-bottom">
                         <div class="uk-card-header">
-                            <p class="uk-text-meta uk-margin-remove-top reservation_date">Your reservation on {{
+                            <p class="uk-text-meta uk-margin-remove-top reservation_date">Reservation on: {{
                                 reservation.shown_date }}</p>
                         </div>
                 </div>
             </div>
         </div>
         <div class="uk-card-body">
-            <p class="uk-text-meta uk-margin-remove-top">We can't wait to see you at: {{ reservation.slot }}</p>
+            <p class="uk-text-meta uk-margin-remove-top">Time Slot: {{ reservation.slot }}</p>
             <p class="uk-text-meta uk-margin-remove-top">We're expecting {{ reservation.covers }} guests.</p>
+            <p class="uk-text-meta uk-margin-remove-top">Name of lead guest: {{ reservation.firstName }} {{
+                reservation.lastName }}</p>
+            <p class="uk-text-meta uk-margin-remove-top">Contact them at {{ reservation.email }}</p>
         </div>
         <div class="uk-card-footer">
-            <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text"
-                uk-toggle>
-                Edit this Reservation</a>
             <a href="{{ url_for('delete_reservation', reservation_id=reservation._id) }}"
                 class="uk-button uk-button-text">
                 Cancel this Reservation</a>

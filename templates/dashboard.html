@@ -2,131 +2,152 @@
 
 {% block content %}
 <script>
-    $( function() {
-      $( "#datepicker" ).datepicker({ minDate: +1, maxDate: "+1M +10D" });
-      $( "#datepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
-    } );
+    $(function () {
+        $("#datepicker").datepicker({
+            minDate: +1,
+            maxDate: "+1M +10D"
+        });
+        $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");
+    });
 </script>
 
-<section id="dash_review" onload="correctTheDate()">
+<section id="dashboard">
     {% if g.user.profile.email == admin %}
     <p>Welcome back {{ g.user.profile.firstName }}</p>
-    {% with messages = get_flashed_messages(with_categories=true) %}
     {% for category, message in messages %}
     <div class="{{ category }}">{{ message }}</div>
-{% endfor %}
-{% endwith %}
+    {% endfor %}
 
-{% for review in admin_review %}
+    <div class="uk-flex-center" uk-grid>
+        <div class="uk-width-1-2@m dashResSection">
 
-{% include 'dashboard_reviews.html' %}
+            {% for reservation in admin_reservation %}
 
-{% endfor %}
+            {% include 'admin_reservations.html' %}
 
-{% else %}
-<p>Welcome {{ g.user.profile.firstName }}</p>
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% for category, message in messages %}
-<div class="{{ category }}">{{ message }}</div>
-{% endfor %}
-{% endwith %}
+            {% endfor %}
+        </div>
 
-<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reservationModal">
-    Book a Reservation
-</button>
+        <div class="uk-width-1-2@m dashReviewSection">
+            {% for review in admin_review %}
 
-<div id="reservationModal" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <div class="uk-card uk-card-default editReview">
-            <div class="uk-card-header">
-                <div class="uk-grid-small uk-flex-middle" uk-grid>
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?</h3>
+            {% include 'dashboard_reviews.html' %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+    {% else %}
+    <p>Welcome {{ g.user.profile.firstName }}</p>
+    {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+
+
+    <div class="uk-flex-center" uk-grid>
+        <div class="uk-width-1-2@m dashResSection">
+            <div class="buttonReservation">
+                <button class="uk-button uk-button-default uk-margin-small-right bookButton" type="button"
+                    uk-toggle="target: #reservationModal">
+                    Book a Reservation
+                </button>
+            </div>
+            <div id="reservationModal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <div class="uk-card uk-card-default editReview">
+                        <div class="uk-card-header">
+                            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                <div class="uk-width-expand">
+                                    <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-card-body">
+                            <form method="POST" action="{{ url_for('add_reservation') }}">
+                                <p>Date: <input name="date" type="text" id="datepicker"
+                                        pattern="^(0[1-9]|[1-9]|1[012])\-(0[1-9]|[1-9]|[12][0-9]|3[01])\-(19|20)\d\d$">
+                                </p>
+                                <div class="uk-margin">
+                                    <select name="slot" class="uk-select">
+                                        <option>14:00-17:00</option>
+                                        <option>18:30-21:30</option>
+                                    </select>
+                                </div>
+                                <div class="uk-margin">
+                                    <input class="uk-input" name="covers" type="text" placeholder="How many guests?">
+                                </div>
+                                <div class="uk-margin">
+                                    <textarea class="uk-textarea" rows="5" id="requirements" name="requirements"
+                                        placeholder="Any special requirements? Or is this a special occasion?"></textarea></textarea><br /><br />
+                                </div>
+                                <div class="uk-card-footer">
+                                    <button class="uk-button uk-button-default uk-modal-close"
+                                        type="button">Cancel</button>
+                                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="uk-card-body">
-                <form method="POST" action="{{ url_for('add_reservation') }}">
-                    <p>Date: <input name="date" type="text" id="datepicker" pattern="^(0[1-9]|[1-9]|1[012])\-(0[1-9]|[1-9]|[12][0-9]|3[01])\-(19|20)\d\d$"></p>
-                    <div class="uk-margin">
-                        <select name="slot" class="uk-select">
-                            <option>14:00-17:00</option>
-                            <option>18:30-21:30</option>
-                        </select>
-                    </div>
-                    <div class="uk-margin">
-                        <input class="uk-input" name="covers" type="text" placeholder="How many guests?">
-                    </div>
-                    <div class="uk-margin">
-                        <textarea class="uk-textarea" rows="5" id="requirements" name="requirements"
-                            placeholder="Any special requirements? Or is this a special occasion?"
-                        ></textarea></textarea><br /><br />
-                    </div>
-                    <div class="uk-card-footer">
-                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                        <button class="uk-button uk-button-primary" type="submit">Save</button>
-                    </div>
-                </form>
-            </div>
+            {% for reservation in user_reservation %}
+
+            {% include 'dashboard_reservations.html' %}
+
+            {% endfor %}
         </div>
-    </div>
-</div>
 
-<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #reviewModal">
-    Want to leave a review?
-</button>
-
-<div id="reviewModal" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <div class="uk-card uk-card-default editReview">
-            <div class="uk-card-header">
-                <div class="uk-grid-small uk-flex-middle" uk-grid>
-                    <div class="uk-width-expand">
-                        <h3 class="uk-card-title uk-margin-remove-bottom">How did we do?</h3>
+        <div class="uk-width-1-2@m dashReviewSection">
+            <div class="buttonReview">
+                <button class="uk-button uk-button-default uk-margin-small-right reviewButton" type="button"
+                    uk-toggle="target: #reviewModal">
+                    Want to leave a review?
+                </button>
+            </div>
+            <div id="reviewModal" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <div class="uk-card uk-card-default editReview">
+                        <div class="uk-card-header">
+                            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                <div class="uk-width-expand">
+                                    <h3 class="uk-card-title uk-margin-remove-bottom">How did we do?</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-card-body">
+                            <form method="POST" action="{{ url_for('add_review') }}">
+                                <div class="uk-margin">
+                                    <label class="starsTitle" for="stars">How many Stars would you give your
+                                        meal?</label><br />
+                                </div>
+                                <img src="{{url_for('static', filename='/img/5star.png')}}" align="middle"
+                                    class=refStars />
+                                <input class="uk-range" style="width: 81%" type="range" value="3" min="1" max="5"
+                                    step="1" id="selectStars" name="stars" required /><br /><br />
+                                <label for="review">How was your meal?</label>
+                                <div class="uk-margin">
+                                    <textarea class="uk-textarea" rows="5" id="review" name="review"
+                                        placeholder="What did we do well, and what can we do to improve?"
+                                        required></textarea></textarea><br /><br />
+                                </div>
+                                <div class="uk-card-footer">
+                                    <button class="uk-button uk-button-default uk-modal-close"
+                                        type="button">Cancel</button>
+                                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="uk-card-body">
-                <form method="POST" action="{{ url_for('add_review') }}">
-                    <div class="uk-margin">
-                        <label class="starsTitle" for="stars">How many Stars would you give your meal?</label><br />
-                    </div>
-                    <img src="{{url_for('static', filename='/img/5star.png')}}" align="middle" class=refStars />
-                    <input class="uk-range" style="width: 81%" type="range" value="3" min="1" max="5" step="1"
-                        id="selectStars" name="stars" required /><br /><br />
-                    <label for="review">How was your meal?</label>
-                    <div class="uk-margin">
-                        <textarea class="uk-textarea" rows="5" id="review" name="review"
-                            placeholder="What did we do well, and what can we do to improve?"
-                            required></textarea></textarea><br /><br />
-                    </div>
-                    <div class="uk-card-footer">
-                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                        <button class="uk-button uk-button-primary" type="submit">Save</button>
-                    </div>
-                </form>
-            </div>
+            {% for review in user_review %}
+
+            {% include 'dashboard_reviews.html' %}
+
+            {% endfor %}
         </div>
     </div>
-</div>
-
-<div class="uk-grid">
-
-    <div class="uk-width-1-2">
-    {% for review in user_review %}
-
-    {% include 'dashboard_reviews.html' %}
-
-    {% endfor %}
-    </div>
-    <div class="uk-width-1-2">
-    {% for reservation in user_reservation %}
-
-    {% include 'dashboard_reservations.html' %}
-
-    {% endfor %}
-    </div>
-</div>
-{% endif %}
+    {% endif %}
 </section>
 {% endblock %}

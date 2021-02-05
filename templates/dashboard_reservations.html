@@ -22,7 +22,7 @@
             <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text" uk-toggle>
                 Edit this Reservation</a>
             {% endif %}
-            <a href="" class="uk-button uk-button-text">
+            <a href="{{ url_for('delete_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text">
                 Cancel this Reservation</a>
         </div>
     </div>

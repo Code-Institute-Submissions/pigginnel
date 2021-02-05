@@ -6,7 +6,7 @@ from flask import (Flask, render_template, g, redirect,
 from flask_oidc import OpenIDConnect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from datetime import datetime, date
+from datetime import date
 from okta import UsersClient
 if os.path.exists("env.py"):
     import env
@@ -103,11 +103,16 @@ def add_reservation():
 @oidc.require_login
 def edit_reservation(reservation_id):
     if request.method == "POST":
+        booked_date = request.form.get("date")
+        date_day = booked_date[0:2]
+        date_month = booked_date[3:5]
+        date_year = booked_date[6:10]
+        int_date = date_year + date_month + date_day
         submit = {
             "firstName": g.user.profile.firstName,
             "lastName": g.user.profile.lastName,
             "email": g.user.profile.email,
-            "date": int(datetime.datetime.strptime(request.form.get("date"))),
+            "date": int(int_date),
             "shown_date": request.form.get("date"),
             "slot": request.form.get("slot"),
             "covers": request.form.get("covers"),
@@ -129,6 +134,13 @@ def edit_reservation(reservation_id):
             return redirect(url_for("dashboard"))
     reservation = mongo.db.reservations.find_one({"_id": ObjectId(reservation_id)})
     return render_template("edit_reservation.html", reservation=reservation)
+
+
+@app.route("/delete_reservation/<reservation_id>")
+def delete_reservation(reservation_id):
+    mongo.db.reservations.remove({"_id": ObjectId(reservation_id)})
+    flash("Your Reservation has been cancelled!", 'update')
+    return redirect(url_for("dashboard"))
 
 
 @app.route("/add_review", methods=["GET", "POST"])

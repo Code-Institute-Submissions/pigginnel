@@ -40,10 +40,11 @@ def before_request():
 def index():
     reviews = mongo.db.reviews.aggregate([{'$sample': {'size': 3}}])
     today = date.today()
+    api_key = os.environ.get("API_KEY")
     mongo.db.reservations.delete_many({"date":
                                       {"$lt": int(today.strftime("%Y%m%d"))}})
     print({"date": {"$lt": today.strftime("%Y%m%d")}})
-    return render_template("index.html", reviews=reviews)
+    return render_template("index.html", reviews=reviews, api_key=api_key)
 
 
 @app.route("/dashboard")

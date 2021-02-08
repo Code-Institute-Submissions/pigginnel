@@ -63,7 +63,7 @@ a:hover {
 
 /*-------------------------------- About Section -------------------- */
 
-#about {
+#about, #gMap, #menu, #reviews {
     padding-top: 2em;
     margin-left: 5vw;
     margin-right: 5vw;
@@ -72,13 +72,6 @@ a:hover {
 }
 
 /*-------------------------------- Menu Section -------------------- */
-
-#menu {
-    padding-top: 2em;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    scroll-margin-top: 10em;
-}
 
 .sampleMenu {
    margin-right: -3vw;
@@ -89,14 +82,6 @@ a:hover {
 }
 
 /*-------------------------------- Review Cards -------------------- */
-
-#reviews {
-    padding-top: 2em;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    padding-bottom: 5em;
-    scroll-margin-top: 10em;
-}
 
 #user_review_stars {
     margin-left: 35%;
@@ -152,4 +137,8 @@ text-align: center;
 }
 .reservation_date {
     text-align: center;
+}
+
+#map {
+    height: 100%;
 }

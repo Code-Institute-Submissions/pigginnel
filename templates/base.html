@@ -14,6 +14,7 @@
     <link rel="shortcut icon" href="/static/img/favicon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script src="/static/js/map.js" ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,8 +71,45 @@
 
     {% endblock %}
 
-    <footer>
+    <footer id="footer">
+        <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+            <div>
+                <p>
+                    Pig in a Ginnel
+                </p>
+                <p>
+                    34-35 Southampton St, Covent Garden
+                </p>
+                <p>
+                    London WC2E 7HG
+                </p>
+                <p>
+                    Monday - Sunday 14:00-22:00
+                </p>
+            </div>
+            
+            <div>
+                <button class="uk-button uk-button-text"><a
+                href="https://www.jamesmartinchef.co.uk">For more on James Martin and James Martin Restaurants</a></button>
+            </div>
 
+            <div class="socialmedia">
+                <a class="social-link"
+                  href="https://www.facebook.com/jamesmartinchefpage"
+                  target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a class="social-link"
+                  href="twitter.com/jamesmartinchef" target="_blank"><i
+                    class="fab fa-twitter fa-lg"></i></a>
+                <a class="social-link"
+                  href="https://www.instagram.com/jamesmartinchef/?hl=en"
+                  target="_blank"><i
+                    class="fab fa-instagram fa-lg"></i></a>
+                <a class="social-link"
+                  href="https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d12883339-Reviews-Frog_By_Adam_Handling-London_England.html"
+                  target="_blank"><i
+                    class="fab fa-tripadvisor fa-lg"></i></a>
+              </div>
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>

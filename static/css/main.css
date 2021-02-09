@@ -4,6 +4,7 @@ html,body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
+    font-family: 'Raleway', sans-serif;
 }
 
 .uk-sticky {
@@ -40,6 +41,22 @@ a:hover {
 .update {
     color: red
 }
+
+/*-------------------------------- Footer -------------------- */
+#footer {
+    justify-content: center;
+}
+
+/*-------------------------------- Index Sections -------------------- */
+
+#about, #gMap, #menu, #reviews {
+    padding-top: 2em;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    width: 90vw;
+    scroll-margin-top: 10em;
+}
+
 /*-------------------------------- Hero Section -------------------- */
 
 .heroimage {
@@ -52,23 +69,16 @@ a:hover {
 }
 
 .herotext>h5 {
-    color: black;
+    color: white;
     font-family: 'Indie Flower', cursive;
-    font-size: 40px;
-}
-
-.herotext {
-    margin-top: 3em;
+    font-size: 2vw;
 }
 
 /*-------------------------------- About Section -------------------- */
 
-#about, #gMap, #menu, #reviews {
-    padding-top: 2em;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width: 90vw;
-    scroll-margin-top: 10em;
+.chefimage {
+    height: 100%;
+    width: auto;
 }
 
 /*-------------------------------- Menu Section -------------------- */
@@ -81,6 +91,22 @@ a:hover {
     margin-right: 3vw;
 }
 
+.sampleMenu > dd, .expressMenu > dd {
+    font-style: italic;
+    font-size: 85%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.uk-description-list>dt {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+.menuTitle {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
 /*-------------------------------- Review Cards -------------------- */
 
 #user_review_stars {
@@ -90,6 +116,12 @@ a:hover {
 
 .starTitle {
     text-align: center;
+}
+
+/*-------------------------------- Map Section -------------------- */
+
+#map {
+    height: 100%;
 }
 
 /*-------------------------------- Dashboard -------------------- */
@@ -137,8 +169,4 @@ text-align: center;
 }
 .reservation_date {
     text-align: center;
-}
-
-#map {
-    height: 100%;
 }

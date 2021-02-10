@@ -3,23 +3,36 @@
         uk-scrollspy="cls: uk-animation-slide-top; target: .uk-card; delay: 300; repeat: true">
         {% for review in reviews %}
         <div>
-            <div class="uk-card uk-card-default uk-card-body">
-
-                {% if review.stars == "1" %}
-                <img src="static/img/1star.png" id="reviewStars" alt="PNG of 1 Star">
-                {% elif review.stars == "2" %}
-                <img src="static/img/2star.png" id="reviewStars" alt="PNG of 2 Star">
-                {% elif review.stars == "3" %}
-                <img src="static/img/3star.png" id="reviewStars" alt="PNG of 3 Star">
-                {% elif review.stars == "4" %}
-                <img src="static/img/4star.png" id="reviewStars" alt="PNG of 4 Star">
-                {% elif review.stars == "5" %}
-                <img src="static/img/5star.png" id="reviewStars" alt="PNG of 5 Star">
-                {% endif %}</h3>
-                <p>{{ review.firstName }} says:</p>
-                <p>{{ review.review }}</p>
+            <div class="uk-card uk-card-default reviewCards">
+                <div class="uk-card-header">
+                    <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand starTitle">
+                            <div class="uk-card-title uk-margin-remove-bottom">
+                                {% if review.stars == "1" %}
+                                <img src="static/img/1star.png" id="reviewStars" alt="PNG of 1 Star">
+                                {% elif review.stars == "2" %}
+                                <img src="static/img/2star.png" id="reviewStars" alt="PNG of 2 Star">
+                                {% elif review.stars == "3" %}
+                                <img src="static/img/3star.png" id="reviewStars" alt="PNG of 3 Star">
+                                {% elif review.stars == "4" %}
+                                <img src="static/img/4star.png" id="reviewStars" alt="PNG of 4 Star">
+                                {% elif review.stars == "5" %}
+                                <img src="static/img/5star.png" id="reviewStars" alt="PNG of 5 Star">
+                                {% endif %}
+                            </div>
+                            <p class="uk-text-meta uk-margin-remove-top review_date">{{ review.date }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <p>What did {{ review.firstName }} think of their visit?</p>
+                    <p>{{ review.review }}</p>
+                </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
+    <button class="uk-button uk-button-default reload-button"><a
+        href="{{ url_for('reload', _anchor='menu') }}">Do you want to see three new reviews?</a></button>
 </section>

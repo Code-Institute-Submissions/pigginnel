@@ -206,6 +206,11 @@ def logout():
     return redirect(url_for("index"))
 
 
+@app.route("/reload")
+def reload():
+    return redirect(url_for("index"))
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "127.0.0.1"),

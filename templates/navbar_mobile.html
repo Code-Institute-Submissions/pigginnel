@@ -1,0 +1,33 @@
+<div id="offcanvas-nav-primary" uk-offcanvas="flip: true overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+            <li>
+                <button class="uk-button uk-button-text"><a
+                        href="{{ url_for('index', _anchor='about') }}">About</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a
+                        href="{{ url_for('index', _anchor='menu') }}">Menu</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a
+                        href="{{ url_for('index', _anchor='reviews') }}">Reviews</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='gMap') }}">Find Us</a></button>
+            </li>
+            {% if not g.user %}
+            <li>
+                <button class="uk-button uk-button-text"><a href="/login">Login</a></button>
+            </li>
+            {% else %}
+            <li>
+                <button class="uk-button uk-button-text"><a href="/dashboard">My Bookings</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a href="/logout">Logout</a></button>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

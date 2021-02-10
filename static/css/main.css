@@ -42,9 +42,81 @@ a:hover {
     color: red
 }
 
+/*-------------------------------- Navbar -------------------- */
+.navButton {
+    display: none;
+}
+
+@media only screen and (max-width: 760px) {
+    #navFull {
+      display: none;
+    }
+    .hero-title{
+        display: flex;
+        margin-bottom: 1em;
+        
+    }
+    .navButton {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -3.5em;
+    }
+    .rname {
+        font-size: 30px;
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 5vw;
+    }
+}
+
+@media only screen and (max-width: 312px) {
+    .navButton {
+        justify-content: center;
+        margin-top: 0em;
+    }
+    .rname {
+        font-size: 30px;
+        justify-content: center;
+    }
+}
 /*-------------------------------- Footer -------------------- */
-#footer {
-    justify-content: center;
+footer {
+    margin-top: 5vh;
+}
+.social-link {
+    position: relative;
+    float: right;
+    padding: 0% 0.5vw 0% 0.5vw;
+}
+
+.social-link:hover {
+    color: grey;
+}
+
+.footer-email>p{
+    position: relative;
+    float: left;
+    color: black;
+    font-family: 'Indie Flower', cursive;
+    margin-left: 11vw;
+    text-align: center;
+}
+
+@media only screen and (max-width: 760px) {
+    .mobile-hide{
+        display: none;
+    }
+
+    .footer-email>p{
+        margin-left: 5vw;
+    }
+    .socialmedia{
+        margin-right: 5vw;
+    }
+    .jm-link{
+        text-align: center;
+    }
+    
 }
 
 /*-------------------------------- Index Sections -------------------- */
@@ -74,6 +146,16 @@ a:hover {
     font-size: 2vw;
 }
 
+@media only screen and (max-width: 760px) {
+    .heroimage {
+        object-fit: cover;
+        height: 140%;
+        width: auto;
+    }
+    .herotext>h5 {
+        font-size: 14px;
+    }
+}
 /*-------------------------------- About Section -------------------- */
 
 .chefimage {
@@ -112,6 +194,13 @@ a:hover {
 #user_review_stars {
     margin-left: 35%;
     margin-right: 35%;
+}
+
+#reviewStars {
+    height: auto;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .starTitle {

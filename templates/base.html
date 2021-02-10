@@ -27,102 +27,84 @@
 
 <body>
     <header id="navsection">
-        <div class="uk-sticky" uk-sticky="offset: 50; bottom: #viewport">
-            <div class="hero-title">
+    <div class="uk-sticky" uk-sticky="offset: 50; bottom: #viewport">
+
+        <div class="hero-title" uk-grid>
+            <div class="uk-width-expand">
                 <a href="{{ url_for('index') }}">
                     <h1 class="rname">Pig in a Ginnel</h1>
                 </a>
-                <hr>
+
+                <a class="uk-button uk-margin-small-right navButton" type="button"
+                    uk-toggle="target: #offcanvas-nav-primary"><i class="fas fa-bars fa-2x"></i>
+                </a>
             </div>
-            <nav class="uk-navbar">
-                <div id="masterNav" class="uk-navbar-center">
-                    <ul id="navList" class="uk-navbar-nav">
-                        <li>
-                            <button class="uk-button uk-button-text"><a
-                                    href="{{ url_for('index', _anchor='about') }}">About</a></button>
-                        </li>
-                        <li>
-                            <button class="uk-button uk-button-text"><a
-                                    href="{{ url_for('index', _anchor='menu') }}">Menu</a></button>
-                        </li>
-                        <li>
-                            <button class="uk-button uk-button-text"><a
-                                    href="{{ url_for('index', _anchor='reviews') }}">Reviews</a></button>
-                        </li>
-                        <li>
-                            <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='gMap') }}">Find Us</a></button>
-                        </li>
-                        {% if not g.user %}
-                        <li>
-                            <button class="uk-button uk-button-text"><a href="/login">Login</a></button>
-                        </li>
-                        {% else %}
-                        <li>
-                            <button class="uk-button uk-button-text"><a href="/dashboard">My Bookings</a></button>
-                        </li>
-                        <li>
-                            <button class="uk-button uk-button-text"><a href="/logout">Logout</a></button>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
+            </div>
+        
+        <div id="navFull">
+            {% include 'navbar.html' %}
         </div>
+
+        <div id="navMob">
+            {% include 'navbar_mobile.html' %}
+        </div>
+
+    </div>
     </header>
     {% block content %}
 
     {% endblock %}
-    <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-nav-primary">Primary Nav</button>
 
-<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
-    <div class="uk-offcanvas-bar">
-
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-
-        <h3>Title</h3>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-    </div>
-</div>
     <footer id="footer">
-        <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
-            <div>
-                <p>
-                    Pig in a Ginnel
-                </p>
-                <p>
-                    34-35 Southampton St, Covent Garden
-                </p>
-                <p>
-                    London WC2E 7HG
-                </p>
-                <p>
-                    Monday - Sunday 14:00-22:00
-                </p>
-            </div>
-            
-            <div>
-                <button class="uk-button uk-button-text"><a
-                href="https://www.jamesmartinchef.co.uk">For more on James Martin and James Martin Restaurants</a></button>
+        <div uk-grid>
+            <div class="uk-width-1-3@m">
+                <div class="jm-link">
+                    <br>
+                    <br>
+                    <button class="uk-button uk-button-text"><a
+                    href="https://www.jamesmartinchef.co.uk">
+                    For more on James Martin
+                    and James Martin Restaurants</a></button>
+                </div>
             </div>
 
-            <div class="socialmedia">
-                <a class="social-link"
-                  href="https://www.facebook.com/jamesmartinchefpage"
-                  target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
-                <a class="social-link"
-                  href="twitter.com/jamesmartinchef" target="_blank"><i
-                    class="fab fa-twitter fa-lg"></i></a>
-                <a class="social-link"
-                  href="https://www.instagram.com/jamesmartinchef/?hl=en"
-                  target="_blank"><i
-                    class="fab fa-instagram fa-lg"></i></a>
-                <a class="social-link"
-                  href="https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d12883339-Reviews-Frog_By_Adam_Handling-London_England.html"
-                  target="_blank"><i
-                    class="fab fa-tripadvisor fa-lg"></i></a>
-              </div>
+            <div class="uk-width-2-3@m">
+                <div class="footer-email">
+                    <p>
+                        Contact us on
+                        <br>
+                        020 7946 0175
+                        <br>
+                        notarealemail@piag.com
+                        
+                    </p>
+                </div>
+            
+                <div class="socialmedia">
+                    <br>
+                    <br class="mobile-hide">
+                    <a class="social-link social-right"
+                    href="https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d12883339-Reviews-Frog_By_Adam_Handling-London_England.html"
+                    target="_blank">
+                        <i class="fab fa-tripadvisor fa-lg"></i>
+                    <a class="social-link"
+                    href="https://www.instagram.com/jamesmartinchef/?hl=en"
+                    target="_blank">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    </a>
+                    <a class="social-link"
+                    href="twitter.com/jamesmartinchef" 
+                    target="_blank">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a class="social-link"
+                    href="https://www.facebook.com/jamesmartinchefpage"
+                    target="_blank">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>

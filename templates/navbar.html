@@ -1,0 +1,33 @@
+<nav class="uk-navbar">
+    <div class="uk-navbar-center">
+        <ul class="uk-navbar-nav">
+            <li>
+                <button class="uk-button uk-button-text"><a
+                        href="{{ url_for('index', _anchor='about') }}">About</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a
+                        href="{{ url_for('index', _anchor='menu') }}">Menu</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a
+                        href="{{ url_for('index', _anchor='reviews') }}">Reviews</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='gMap') }}">Find Us</a></button>
+            </li>
+            {% if not g.user %}
+            <li>
+                <button class="uk-button uk-button-text"><a href="/login">Login</a></button>
+            </li>
+            {% else %}
+            <li>
+                <button class="uk-button uk-button-text"><a href="/dashboard">My Bookings</a></button>
+            </li>
+            <li>
+                <button class="uk-button uk-button-text"><a href="/logout">Logout</a></button>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

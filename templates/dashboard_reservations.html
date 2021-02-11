@@ -14,14 +14,27 @@
         <div class="uk-card-body">
             <p class="uk-text-meta uk-margin-remove-top">We can't wait to see you at: {{ reservation.slot }}</p>
             <p class="uk-text-meta uk-margin-remove-top">We're expecting {{ reservation.covers }} guests.</p>
+            <p class="uk-text-meta uk-margin-remove-top">Any notes: <br>{{ reservation.requirements }}</p>
         </div>
         <div class="uk-card-footer">
-            <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text"
-                uk-toggle>
-                Edit this Reservation</a>
-            <a href="{{ url_for('delete_reservation', reservation_id=reservation._id) }}"
-                class="uk-button uk-button-text">
-                Cancel this Reservation</a>
+            {% if g.user.profile.email != admin %}
+            <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text" uk-toggle>
+                Edit My Booking</a>
+            {% endif %}
+            <button class="uk-button uk-button-text" type="button" uk-toggle="target: #delete-reservation">Cancel My Booking</button>
+        </div>
+        <div id="delete-reservation" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Cancel Your Reservation</h2>
+                <p>Are you sure you want to cancel?</p>
+                <p class="uk-text-right">
+                    <div uk-grid class="cancel-buttons">
+                    <button class="uk-width-1-2 uk-button uk-button-default uk-modal-close submit-button" type="button">Keep it</button>
+                    <a href="{{ url_for('delete_reservation', reservation_id=reservation._id) }}" class="submit-button uk-width-1-2 uk-button uk-button-primary">
+                        Cancel my Booking</a>
+                    </div>
+                </p>
+            </div>
         </div>
     </div>
 </div>

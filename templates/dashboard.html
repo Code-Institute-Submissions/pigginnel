@@ -14,9 +14,12 @@
 <section id="dashboard">
     {% if g.user.profile.email == admin %}
     <p>Welcome back {{ g.user.profile.firstName }}</p>
-    {% for category, message in messages %}
-    <div class="{{ category }}">{{ message }}</div>
+    {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+      <p>{{ message }}<p>
     {% endfor %}
+    {% endwith %}
+
 
     <div class="uk-flex-center" uk-grid>
         <div class="uk-width-1-2@m dashResSection">
@@ -39,9 +42,13 @@
 
     {% else %}
     <p>Welcome {{ g.user.profile.firstName }}</p>
-    {% for category, message in messages %}
-    <div class="{{ category }}">{{ message }}</div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+      <p>{{ message }}<p>
     {% endfor %}
+    {% endif %}
+    {% endwith %}
 
     <div class="uk-flex-center" uk-grid>
         <div class="uk-width-1-2@m dashResSection">
@@ -74,16 +81,16 @@
                                     </select>
                                 </div>
                                 <div class="uk-margin">
-                                    <input class="uk-input" name="covers" type="text" placeholder="How many guests?">
+                                    <input class="uk-input" name="covers" type="text"  pattern="^(0[1-9]|[1-9]|[12][0-9]|3[00])$" placeholder="How many guests?">
                                 </div>
                                 <div class="uk-margin">
-                                    <textarea class="uk-textarea" rows="5" id="requirements" name="requirements"
-                                        placeholder="Any special requirements? Or is this a special occasion?"></textarea></textarea><br /><br />
+                                    <textarea class="uk-textarea" rows="5" id="requirements" name="requirements" type="text"
+                                        placeholder="Any special requirements? Or is this a special occasion?" minlength="5" maxlength="1500" ></textarea></textarea><br /><br />
                                 </div>
                                 <div class="uk-card-footer">
-                                    <button class="uk-button uk-button-default uk-modal-close"
+                                    <button class="uk-button uk-button-default uk-modal-close submit-button"
                                         type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                    <button class="uk-button uk-button-primary submit-button" type="submit">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -128,12 +135,12 @@
                                 <div class="uk-margin">
                                     <textarea class="uk-textarea" rows="5" id="review" name="review"
                                         placeholder="What did we do well, and what can we do to improve?"
-                                        required></textarea></textarea><br /><br />
+                                        minlength="50" maxlength="1500" required></textarea></textarea><br /><br />
                                 </div>
                                 <div class="uk-card-footer">
-                                    <button class="uk-button uk-button-default uk-modal-close"
+                                    <button class="uk-button uk-button-default uk-modal-close submit-button"
                                         type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary" type="submit">Save</button>
+                                    <button class="uk-button uk-button-primary submit-button" type="submit">Save</button>
                                 </div>
                             </form>
                         </div>

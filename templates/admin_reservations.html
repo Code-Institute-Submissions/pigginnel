@@ -14,6 +14,7 @@
         <div class="uk-card-body">
             <p class="uk-text-meta uk-margin-remove-top">Time Slot: {{ reservation.slot }}</p>
             <p class="uk-text-meta uk-margin-remove-top">We're expecting {{ reservation.covers }} guests.</p>
+            <p class="uk-text-meta uk-margin-remove-top">Any notes: <br>{{ reservation.requirements }}</p>
             <p class="uk-text-meta uk-margin-remove-top">Name of lead guest: {{ reservation.firstName }} {{
                 reservation.lastName }}</p>
             <p class="uk-text-meta uk-margin-remove-top">Contact them at {{ reservation.email }}</p>

@@ -180,7 +180,6 @@ footer {
         display: flex;
         justify-content: center;
     }
-    
 }
 
 /*-------------------------------- Review Cards -------------------- */
@@ -266,6 +265,37 @@ text-align: center;
     margin-right: 10%;
 }
 
+#delete-reservation, #delete-review{
+    text-align: center;
+}
+
+.cancel-buttons{
+    display: flex;
+    justify-content: center;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center; 
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 1em;
+}
+
+@media only screen and (max-width: 760px) {
+    .buttonReservation, .buttonReview {
+        display: flex;
+        justify-content: center;
+    }
+
+    .bookButton, .reviewButton{
+        margin-left: 0%;
+    }
+}
+/*-------------------------------- Edit Reservation -------------------- */
 .margined {
     margin-left: 10vw;
     margin-right: 10vw;

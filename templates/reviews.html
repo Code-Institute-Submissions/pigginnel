@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="uk-card-body">
-                    <p>What did {{ review.firstName }} think of their visit?</p>
+                    <p>{{ review.firstName }} had this to say about their visit:</p>
                     <p>{{ review.review }}</p>
                 </div>
             </div>
@@ -34,5 +34,5 @@
     </div>
 
     <button class="uk-button uk-button-default reload-button"><a
-        href="{{ url_for('reload', _anchor='menu') }}">Do you want to see three new reviews?</a></button>
+        href="{{ url_for('reload', _anchor='reviews') }}">Do you want to see three new reviews?</a></button>
 </section>

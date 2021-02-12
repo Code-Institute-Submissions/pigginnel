@@ -84,19 +84,24 @@ def add_reservation():
             "covers": request.form.get("covers"),
             "requirements": request.form.get("requirements")
         }
-        date_slot_query = {"date": request.form.get("date"),
+        date_slot_query = {"shown_date": request.form.get("date"),
                            "slot": request.form.get("slot")}
         existing_reservations = mongo.db.reservations.find(date_slot_query)
+        new_covers = request.form.get("covers")
         cover_count = sum(
-            [int(reservation["covers"])
-             for reservation in existing_reservations]
-            + [int(request.form.get("covers"))])
-        if cover_count < 30:
+                [int(reservation["covers"])
+                 for reservation in existing_reservations])
+        total_covers = int(new_covers) + int(cover_count)
+        remaining_covers = 30 - int(cover_count)
+        remaining_message = "Sorry, we only have " \
+            + str(remaining_covers) \
+            + " seats remaining for that session"
+        if total_covers < 30:
             mongo.db.reservations.insert_one(reservation)
             flash("Reservation successfully booked")
             return redirect(url_for("dashboard"))
         else:
-            flash("Sorry, that slot is fully booked for your amount of guests")
+            flash(remaining_message)
             return redirect(url_for("dashboard"))
     return render_template("dashboard.html")
 
@@ -120,21 +125,27 @@ def edit_reservation(reservation_id):
             "covers": request.form.get("covers"),
             "requirements": request.form.get("requirements")
         }
-        date_slot_query = {"date": request.form.get("date"),
+        date_slot_query = {"shown_date": request.form.get("date"),
                            "slot": request.form.get("slot")}
         existing_reservations = mongo.db.reservations.find(date_slot_query)
+        new_covers = request.form.get("covers")
         cover_count = sum(
-            [int(reservation["covers"])
-             for reservation in existing_reservations]
-            + [int(request.form.get("covers"))])
-        if cover_count < 30:
+                [int(reservation["covers"])
+                 for reservation in existing_reservations])
+        total_covers = int(new_covers) + int(cover_count)
+        remaining_covers = 30 - int(cover_count)
+        remaining_message = "Sorry, we only have " \
+            + str(remaining_covers) \
+            + " seats remaining for that session." \
+            + " Your reservation has not been updated."
+        if total_covers < 30:
             mongo.db.reservations.replace_one({"_id":
                                                ObjectId(reservation_id)},
                                               submit)
             flash("Your Reservation Has Been Updated", 'update')
             return redirect(url_for("dashboard"))
         else:
-            flash("Sorry, that slot is fully booked for your amount of guests")
+            flash(remaining_message)
             return redirect(url_for("dashboard"))
     reservation = mongo.db.reservations.find_one({"_id":
                                                   ObjectId(reservation_id)})

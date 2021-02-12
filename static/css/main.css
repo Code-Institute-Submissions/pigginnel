@@ -42,6 +42,10 @@ a:hover {
     color: red
 }
 
+.uk-tab>.uk-active>a {
+    border-color: black;
+}
+
 /*-------------------------------- Navbar -------------------- */
 .navButton {
     display: none;
@@ -174,8 +178,7 @@ footer {
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
 }
-
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1200px) {
     .titles {
         display: flex;
         justify-content: center;

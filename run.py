@@ -2,7 +2,7 @@
 import os
 import pymongo
 from flask import (Flask, render_template, g, redirect,
-                   url_for, request, session, flash)
+                   url_for, request, flash)
 from flask_oidc import OpenIDConnect
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId

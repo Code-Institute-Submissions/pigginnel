@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div uk-filter="target: .js-filter; animation: fade">
+    <ul class="uk-subnav uk-subnav-pill filters uk-navbar-nav filters">
+        <li class="uk-button uk-button-text uk-active" uk-filter-control><a href="#">All</a></li>
+        <li class="uk-button uk-button-text filter-button"uk-filter-control=".tag-five"><a href="#">Five</a></li>
+        <li class="uk-button uk-button-text filter-button"uk-filter-control=".tag-four"><a href="#">Four</a></li>
+        <li class="uk-button uk-button-text filter-button"uk-filter-control=".tag-three"><a href="#">Three</a></li>
+        <li class="uk-button uk-button-text filter-button"uk-filter-control=".tag-two"><a href="#">Two</a></li>
+        <li class="uk-button uk-button-text filter-button"uk-filter-control=".tag-one"><a href="#">One</a></li>
+    </ul>
+{% include 'reviews.html' %}
+</div>
+{% endblock %}

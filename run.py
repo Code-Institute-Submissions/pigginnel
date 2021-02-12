@@ -47,6 +47,12 @@ def index():
     return render_template("index.html", reviews=reviews, api_key=api_key)
 
 
+@app.route("/reviews")
+def reviews():
+    reviews = list(mongo.db.reviews.find({}))
+    return render_template("reviews_all.html", reviews=reviews)
+
+
 @app.route("/dashboard")
 @oidc.require_login
 def dashboard():

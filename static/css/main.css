@@ -42,9 +42,7 @@ a:hover {
     color: red
 }
 
-.uk-tab>.uk-active>a {
-    border-color: black;
-}
+
 
 /*-------------------------------- Navbar -------------------- */
 .navButton {
@@ -209,6 +207,29 @@ footer {
     margin-right: auto;
     margin-top: 2em;
 }
+
+.filters {
+    margin-top: 2em;
+    justify-content: center;
+}
+
+.uk-subnav-pill>*>:first-child {
+    padding: 5px 2px;
+    background: 0 0;
+    color: #999;
+    min-height: 0px;
+    font-family: 'Indie Flower', cursive;
+}
+
+.uk-subnav-pill>.uk-active>a{
+    background-color: transparent;
+    text-align: center;
+    font-weight: bold;
+}
+.uk-subnav>* {
+    padding-left: 0px;
+}
+
 /*-------------------------------- Map Section -------------------- */
 
 #map {

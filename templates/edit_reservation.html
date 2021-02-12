@@ -5,9 +5,10 @@
     $(function () {
         $("#datepicker").datepicker({
             minDate: +1,
-            maxDate: "+1M +10D"
+            maxDate: "+1M +10D",
         });
-        $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy");
+        $("#datepicker").datepicker("option", "dateFormat", "dd-mm-yy")
+        $("#datepicker").datepicker('setDate', $("#datepicker").val("{{ reservation.shown_date }}"));
     });
 </script>
 
@@ -17,17 +18,23 @@
             <form method="POST" action="{{ url_for('edit_reservation', reservation_id=reservation._id) }}">
                 <div class="margined">
                     <p>Date: <input name="date" type="text" id="datepicker"
-                            pattern="^(0[1-9]|[1-9]|1[012])\-(0[1-9]|[1-9]|[12][0-9]|3[01])\-(19|20)\d\d$"></p>
+                            pattern="^(0[1-9]|[1-9]|1[012])\-(0[1-9]|[1-9]|[12][0-9]|3[01])\-(19|20)\d\d$" required></p>
                 </div>
                 <div class="margined">
                     <select name="slot" class="uk-select">
-                        <option>14:00-17:00</option>
+                        {% if reservation.slot == "14:00-17:00" %}
+                        <option selected>14:00-17:00</option>
                         <option>18:30-21:30</option>
+                        {% else %}
+                        <option >14:00-17:00</option>
+                        <option selected>18:30-21:30</option>
+                        {% endif %}
                     </select><br /><br />
                 </div>
                 <div class="margined">
+                    <p>How many Guests?</p>
                     <input class="uk-input" name="covers" type="text" pattern="^(0[1-9]|[1-9]|[12][0-9]|3[00])$"
-                        placeholder="How many guests?">
+                        value="{{ reservation.covers }}">
                 </div>
                 <div class="margined">
                     <textarea class="uk-textarea" rows="5" id="requirements" name="requirements"

@@ -42,6 +42,9 @@
 
     {% else %}
     <p>Welcome {{ g.user.profile.firstName }}</p>
+    <button class="uk-button uk-button-default"
+        href="https://dev-5976059.okta.com/enduser/settings">
+        Edit Account Details</button>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}

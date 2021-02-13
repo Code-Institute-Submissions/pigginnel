@@ -176,6 +176,12 @@ footer {
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
 }
+
+.uk-tab>.uk-active>a {
+    color: #333;
+    border-color: black;
+}
+
 @media only screen and (max-width: 1200px) {
     .titles {
         display: flex;
@@ -324,4 +330,9 @@ text-align: center;
     margin-left: 10vw;
     margin-right: 10vw;
     margin-bottom: 2em;
+}
+
+.error{
+    margin-top: 5em;
+    margin-left: 5%;
 }

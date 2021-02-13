@@ -228,6 +228,16 @@ def reload():
     return redirect(url_for("index"))
 
 
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('error_404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template('error_500.html'), 500
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "127.0.0.1"),

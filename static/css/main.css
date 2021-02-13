@@ -104,7 +104,9 @@ footer {
     margin-left: 11vw;
     text-align: center;
 }
-
+.jm-text{
+    font-family: 'Indie Flower', cursive !important;
+}
 @media only screen and (max-width: 760px) {
     .mobile-hide{
         display: none;
@@ -197,7 +199,7 @@ footer {
     margin-right: 35%;
 }
 
-#reviewStars {
+.reviewStars {
     height: auto;
     width: 50%;
     margin-left: 20%;

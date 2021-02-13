@@ -34,16 +34,17 @@ a:hover {
     margin-right: 2em;
 }
 
-.uk-navbar {
-    margin-bottom: 1em;
-}
-
 .update {
     color: red
 }
 
-
-
+.navButton {
+    color: black;
+    font-family: 'Indie Flower', cursive !important;
+}
+.navButton:hover{
+    font-weight: bold;
+}
 /*-------------------------------- Navbar -------------------- */
 .navButton {
     display: none;

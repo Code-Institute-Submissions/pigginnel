@@ -2,30 +2,27 @@
     <div class="uk-offcanvas-bar uk-flex uk-flex-column">
         <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
             <li>
-                <button class="uk-button uk-button-text"><a
-                        href="{{ url_for('index', _anchor='about') }}">About</a></button>
+                <a class="uk-active" href="{{ url_for('index', _anchor='about') }}">About</a>
             </li>
             <li>
-                <button class="uk-button uk-button-text"><a
-                        href="{{ url_for('index', _anchor='menu') }}">Menu</a></button>
+                <a class="uk-active" href="{{ url_for('index', _anchor='menu') }}">Menu</a>
             </li>
             <li>
-                <button class="uk-button uk-button-text"><a
-                        href="{{ url_for('index', _anchor='reviews') }}">Reviews</a></button>
+                <a class="uk-active" href="{{ url_for('index', _anchor='reviews') }}">Reviews</a>
             </li>
             <li>
-                <button class="uk-button uk-button-text"><a href="{{ url_for('index', _anchor='gMap') }}">Find Us</a></button>
+                <a class="uk-active" href="{{ url_for('index', _anchor='gMap') }}">Find Us</a>
             </li>
             {% if not g.user %}
             <li>
-                <button class="uk-button uk-button-text"><a href="/login">Login/Make a Reservation</a></button>
+                <a class="uk-active" href="/login">Login/Make a Reservation</a>
             </li>
             {% else %}
             <li>
-                <button class="uk-button uk-button-text"><a href="/dashboard">My Bookings & Reviews</a></button>
+                <a class="uk-active" href="/dashboard">My Bookings & Reviews</a>
             </li>
             <li>
-                <button class="uk-button uk-button-text"><a href="/logout">Logout</a></button>
+                <a class="uk-active" href="/logout">Logout</a>
             </li>
             {% endif %}
         </ul>

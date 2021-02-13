@@ -16,7 +16,7 @@
     <p>Welcome back {{ g.user.profile.firstName }}</p>
     {% with messages = get_flashed_messages() %}
     {% for message in messages %}
-      <p>{{ message }}<p>
+    <p class="uk-animation-slide-right">{{ message }}</p>
     {% endfor %}
     {% endwith %}
 
@@ -41,14 +41,19 @@
     </div>
 
     {% else %}
-    <p>Welcome {{ g.user.profile.firstName }}</p>
-    <button class="uk-button uk-button-default"
-        href="https://dev-5976059.okta.com/enduser/settings">
-        Edit Account Details</button>
+    <div class="account uk-width-1-2@m">
+        <p>Welcome {{ g.user.profile.firstName }}</p>
+            <a class="uk-button uk-button-default account-button uk-margin-small-right"
+                href="https://dev-5976059.okta.com/enduser/settings"
+                target="_blank">
+                Edit Account Details</a>
+    </div>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
-      <p>{{ message }}<p>
+    
+    <p class="uk-animation-slide-right">{{ message }}</p>
+    
     {% endfor %}
     {% endif %}
     {% endwith %}
@@ -56,10 +61,10 @@
     <div class="uk-flex-center" uk-grid>
         <div class="uk-width-1-2@m dashResSection">
             <div class="buttonReservation">
-                <button class="uk-button uk-button-default uk-margin-small-right bookButton" type="button"
+                <a class="uk-button uk-button-default uk-margin-small-right bookButton" type="button"
                     uk-toggle="target: #reservationModal">
                     Book a Reservation
-                </button>
+            </a>
             </div>
             <div id="reservationModal" uk-modal>
                 <div class="uk-modal-dialog uk-modal-body">

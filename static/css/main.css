@@ -315,14 +315,30 @@ text-align: center;
     margin-bottom: 1em;
 }
 
+.account-button{
+    margin-left: -2%;
+}
+
+@media only screen and (max-width: 1024px) {
+    .account-button{
+        margin-left: 2%;
+    }
+}
 @media only screen and (max-width: 760px) {
-    .buttonReservation, .buttonReview {
-        display: flex;
+    .buttonReservation, .buttonReview, .account-button {
+        display: block;
         justify-content: center;
     }
-
-    .bookButton, .reviewButton{
+    .account-button{
         margin-left: 0%;
+    }
+    .bookButton{
+        margin-left: 2%;
+        width: 95%;
+    }
+    .reviewButton{
+        margin-left: 0%;
+        width: 95%;
     }
 }
 /*-------------------------------- Edit Reservation -------------------- */

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% if g.user.profile.email == review.email %}
 <section id="edit_review_section">
     <div class="uk-card uk-card-default editReview">
         <div class="uk-card-header">
@@ -32,5 +34,15 @@
             </form>
         </div>
     </div>
+
+{% else %}
+<div class="error">
+
+    <p>Nothing to be found here</p>
+
+    <a class="uk-button uk-button-secondary" href="/">Return Home</a>
+</div>
 </section>
+
+{% endif %}
 {% endblock %}

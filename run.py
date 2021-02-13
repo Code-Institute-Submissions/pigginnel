@@ -221,9 +221,12 @@ def login():
 @oidc.require_login
 def logout():
     info = oidc.user_getinfo(["preferred_username", "email", "sub"])
-    raw_id_token = OAuth2Credentials.from_json(oidc.credentials_store[info.get("sub")]).token_response["id_token"]
+    raw_id_token = OAuth2Credentials.from_json(
+            oidc.credentials_store[info.get("sub")]).token_response["id_token"]
     id_token = str(raw_id_token)
-    logout_request = "https://dev-5976059.okta.com/oauth2/default/v1/logout?id_token_hint={}&post_logout_redirect_uri=http://127.0.0.1:5000/".format(id_token)
+    logout_request = ("https://dev-5976059.okta.com/oauth2/default/v1/"
+                      f"logout?id_token_hint={id_token}&post_logout_redirect_"
+                      "uri=http://127.0.0.1:5000/")
     oidc.logout()
     return redirect(logout_request)
 

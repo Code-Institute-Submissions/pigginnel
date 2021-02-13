@@ -8,9 +8,9 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import date
 from okta import UsersClient
+from oauth2client.client import OAuth2Credentials
 if os.path.exists("env.py"):
     import env
-
 
 app = Flask(__name__)
 app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
@@ -218,9 +218,14 @@ def login():
 
 
 @app.route("/logout")
+@oidc.require_login
 def logout():
+    info = oidc.user_getinfo(["preferred_username", "email", "sub"])
+    raw_id_token = OAuth2Credentials.from_json(oidc.credentials_store[info.get("sub")]).token_response["id_token"]
+    id_token = str(raw_id_token)
+    logout_request = "https://dev-5976059.okta.com/oauth2/default/v1/logout?id_token_hint={}&post_logout_redirect_uri=http://127.0.0.1:5000/".format(id_token)
     oidc.logout()
-    return redirect(url_for("index"))
+    return redirect(logout_request)
 
 
 @app.route("/reload")

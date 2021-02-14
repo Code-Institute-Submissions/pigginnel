@@ -226,7 +226,7 @@ def logout():
     id_token = str(raw_id_token)
     logout_request = ("https://dev-5976059.okta.com/oauth2/default/v1/"
                       f"logout?id_token_hint={id_token}&post_logout_redirect_"
-                      "uri=http://127.0.0.1:5000/")
+                      "uri=http://pigginnel.herokuapp.com")
     oidc.logout()
     return redirect(logout_request)
 
@@ -250,4 +250,4 @@ if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "127.0.0.1"),
         port=int(os.environ.get("PORT", "5000")),
-        debug=True)
+        debug=False)

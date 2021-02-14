@@ -24,6 +24,16 @@
  
 The live website can be found here at [http://pigginnel.herokuapp.com](http://pigginnel.herokuapp.com)
 
+If you do not wish to make an account, two mock accounts have been created just for this application: 
+
+Admin account:
+username - ms3.admin@gmail.com
+password - distinction 
+
+Test User:
+username - ms3.user@gmail.com
+password - distinction 
+
 # UX
 
 When people go to restaurants, there are three features people want when researching where to eat; 

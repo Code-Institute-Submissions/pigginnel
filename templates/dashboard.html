@@ -2,7 +2,7 @@
 
 {% block content %}
 <script>
-    $(function () {
+    $(function() {
         $("#datepicker").datepicker({
             minDate: +1,
             maxDate: "+2M +10D"
@@ -19,7 +19,6 @@
     <p class="uk-animation-slide-right">{{ message }}</p>
     {% endfor %}
     {% endwith %}
-
 
     <div class="uk-flex-center" uk-grid>
         <div class="uk-width-1-2@m dashResSection">
@@ -43,17 +42,16 @@
     {% else %}
     <div class="account uk-width-1-2@m">
         <p>Welcome {{ g.user.profile.firstName }}</p>
-            <a class="uk-button uk-button-default account-button uk-margin-small-right"
-                href="https://dev-5976059.okta.com/enduser/settings"
-                target="_blank">
-                Edit Account Details</a>
+        <a class="uk-button uk-button-default account-button uk-margin-small-right"
+            href="https://dev-5976059.okta.com/enduser/settings" target="_blank">
+            Edit Account Details</a>
     </div>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
-    
+
     <p class="uk-animation-slide-right">{{ message }}</p>
-    
+
     {% endfor %}
     {% endif %}
     {% endwith %}
@@ -61,10 +59,10 @@
     <div class="uk-flex-center" uk-grid>
         <div class="uk-width-1-2@m dashResSection">
             <div class="buttonReservation">
-                <a class="uk-button uk-button-default uk-margin-small-right bookButton" type="button"
+                <a class="uk-button uk-button-default uk-margin-small-right bookButton"
                     uk-toggle="target: #reservationModal">
                     Book a Reservation
-            </a>
+                </a>
             </div>
             <div id="reservationModal" uk-modal>
                 <div class="uk-modal-dialog uk-modal-body">
@@ -72,17 +70,17 @@
                         <div class="uk-card-header">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>
                                 <div class="uk-width-expand">
-                                    <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?
-                                    </h3>
+                                    <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?</h3>
                                 </div>
                             </div>
                         </div>
                         <div class="uk-card-body">
                             <form method="POST" action="{{ url_for('add_reservation') }}">
                                 <p>Date: <input class="uk-input" name="date" type="text" id="datepicker"
-                                        pattern="^(0[1-9]|[1-9]|[12][0-9]|3[01])\-(0[1-9]|[1-9]|1[012])\-(19|20)\d\d$" onkeydown="return false" required 
+                                        pattern="^(0[1-9]|[1-9]|[12][0-9]|3[01])\-(0[1-9]|[1-9]|1[012])\-(19|20)\d\d$"
+                                        onkeydown="return false" required
                                         oninvalid="this.setCustomValidity('We need to know when you would like to visit')"
-                                        oninput="this.setCustomValidity('')"/>
+                                        oninput="this.setCustomValidity('')" />
                                 </p>
                                 <div class="uk-margin">
                                     <select name="slot" class="uk-select">
@@ -91,18 +89,23 @@
                                     </select>
                                 </div>
                                 <div class="uk-margin">
-                                    <input class="uk-input" name="covers" type="text"  pattern="^(0[1-9]|[1-9]|[12][0-9]|3[00])$" placeholder="How many guests?" required 
-                                    oninvalid="this.setCustomValidity('Please enter an integer between 1 and 30')"
-                                    oninput="this.setCustomValidity('')"/>
+                                    <input class="uk-input" name="covers" type="text"
+                                        pattern="^(0[1-9]|[1-9]|[12][0-9]|3[00])$" placeholder="How many guests?"
+                                        required
+                                        oninvalid="this.setCustomValidity('Please enter an integer between 1 and 30')"
+                                        oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="uk-margin">
-                                    <textarea class="uk-textarea" rows="5" id="requirements" name="requirements" type="text"
-                                        placeholder="Any special requirements? Or is this a special occasion?" minlength="5" maxlength="1500" ></textarea></textarea><br /><br />
+                                    <textarea class="uk-textarea" rows="5" id="requirements" name="requirements"
+                                        type="text"
+                                        placeholder="Any special requirements? Or is this a special occasion?"
+                                        minlength="5" maxlength="1500"></textarea><br /><br />
                                 </div>
                                 <div class="uk-card-footer">
                                     <button class="uk-button uk-button-default uk-modal-close submit-button"
                                         type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary submit-button" type="submit">Save</button>
+                                    <button class="uk-button uk-button-primary submit-button"
+                                        type="submit">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -146,13 +149,14 @@
                                 <label for="review">How was your meal?</label>
                                 <div class="uk-margin">
                                     <textarea class="uk-textarea" rows="5" id="review" name="review"
-                                        placeholder="What did we do well, and what can we do to improve?"
-                                        minlength="50" maxlength="1500" required></textarea></textarea><br /><br />
+                                        placeholder="What did we do well, and what can we do to improve?" minlength="50"
+                                        maxlength="1500" required></textarea><br /><br />
                                 </div>
                                 <div class="uk-card-footer">
                                     <button class="uk-button uk-button-default uk-modal-close submit-button"
                                         type="button">Cancel</button>
-                                    <button class="uk-button uk-button-primary submit-button" type="submit">Save</button>
+                                    <button class="uk-button uk-button-primary submit-button"
+                                        type="submit">Save</button>
                                 </div>
                             </form>
                         </div>

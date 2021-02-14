@@ -12,6 +12,7 @@ from oauth2client.client import OAuth2Credentials
 if os.path.exists("env.py"):
     import env
 
+# Below is the setup required to connect to Okta
 app = Flask(__name__)
 app.config["OIDC_CLIENT_SECRETS"] = "client_secrets.json"
 app.config["OIDC_COOKIE_SECURE"] = False
@@ -34,6 +35,7 @@ def before_request():
         g.user = okta_client.get_user(oidc.user_getfield("sub"))
     else:
         g.user = None
+# If a user is logged in, g.user needed for further functions
 
 
 @app.route("/")
@@ -43,6 +45,7 @@ def index():
     api_key = os.environ.get("API_KEY")
     mongo.db.reservations.delete_many({"date":
                                       {"$lt": int(today.strftime("%Y%m%d"))}})
+    # Checks through database and deletes any reservation older than Today.
     print({"date": {"$lt": today.strftime("%Y%m%d")}})
     return render_template("index.html", reviews=reviews, api_key=api_key)
 
@@ -54,7 +57,7 @@ def reviews():
 
 
 @app.route("/dashboard")
-@oidc.require_login
+@oidc.require_login  # User must be logged in through Okta
 def dashboard():
     admin = os.environ.get("ADMIN")
     user = g.user.profile.email
@@ -64,6 +67,7 @@ def dashboard():
             {"email": user}).sort("date", pymongo.ASCENDING))
     admin_review = list(mongo.db.reviews.find({}))
     admin_reservation = list(mongo.db.reservations.find({}))
+    # Admin sees entire collection, user only their own documents
     return render_template("dashboard.html",
                            admin=admin,
                            user_review=user_review,
@@ -75,6 +79,7 @@ def dashboard():
 @app.route("/add_reservation", methods=["GET", "POST"])
 def add_reservation():
     if request.method == "POST":
+        # Takes date user selected, and reverses for easier sorting
         booked_date = request.form.get("date")
         date_day = booked_date[0:2]
         date_month = booked_date[3:5]
@@ -102,6 +107,8 @@ def add_reservation():
         remaining_message = "Sorry, we only have " \
             + str(remaining_covers) \
             + " seats remaining for that session"
+        # Checks whether a session is already fully booked
+        # before submitting to the database
         if total_covers < 30:
             mongo.db.reservations.insert_one(reservation)
             flash("Reservation successfully booked")
@@ -219,6 +226,9 @@ def login():
 
 @app.route("/logout")
 @oidc.require_login
+# User needs logging out of both the app and Okta itself
+# Otherwise, user can immediately relog in, which is not secure.
+# After user is logged out of Okta, they are redirected to the index
 def logout():
     info = oidc.user_getinfo(["preferred_username", "email", "sub"])
     raw_id_token = OAuth2Credentials.from_json(
@@ -233,6 +243,7 @@ def logout():
 
 @app.route("/reload")
 def reload():
+    # Used to refresh the reviews on index page
     return redirect(url_for("index"))
 
 

@@ -49,7 +49,7 @@ The fonts were taken from [Google Fonts](https://fonts.google.com), and the ones
 
 ## [Wireframes](/wireframes/)
 
-[Adobe XD](https://www.adobe.com/uk/products/xd.html) was used to create the initial wireframes, the pdf file with all the wireframes can be viewed in []().
+[Adobe XD](https://www.adobe.com/uk/products/xd.html) was used to create the initial wireframes, the pdf file with all the wireframes can be viewed in [Wireframes](/wireframes/ms3_restaurant.pdf).
 
 ## User-stories
 
@@ -236,10 +236,6 @@ Further information on all the steps taken for testing this website can be found
 
 This project is currently deployed to [Heroku](https://www.heroku.com/) and is available to view [here](http://pigginnel.herokuapp.com)
 
-In order to deploy to [Heroku](https://www.heroku.com/):
-
-- 
-
 To run the project locally:
 
 - Click the green Clone or Download button on the [Github Repository](https://github.com/P0shJosh/pigginnel)
@@ -252,6 +248,80 @@ To run the project locally:
 
 - Use the "git clone" command and paste the url copied in the second step.
 
+- You will need to create an env.py, which should be added to your .gitignore, with the following: 
+
+```
+import os
+
+os.environ.setdefault("IP", "127.0.0.1")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "{string}"")
+os.environ.setdefault("MONGO_URI", "{string}"") 
+os.environ.setdefault("MONGO_DBNAME", "{string}"")
+os.environ.setdefault("AUTH_TOKEN",
+                      "{string}"")
+os.environ.setdefault("ADMIN", "the email address of your admin")
+```
+In order to connect to [MongoDB](https://www.mongodb.com): 
+
+- Create a free account on [MongoDB](https://www.mongodb.com)
+
+- Create a database titled "ginnelPig"
+
+- Within that, you need to create the collection "reservations" 
+
+```
+_id: <ObjectId>
+firstName: <string>
+lastName: <string>
+email: <string>
+date: <integer>
+shown_date: <string>
+slot: <string>
+covers: <string>
+requirements: <string>
+```
+- You also need to create the collection "reviews" 
+```
+_id: <ObjectId>
+firstName: <string>
+lastName: <string>
+email: <string>
+date: <string>
+stars: <string>
+review: <string>
+```
+
+To use Okta for user management, you will need to follow the instructions outlined in this guide by [Randall Degges](https://developer.okta.com/blog/2018/07/12/flask-tutorial-simple-user-registration-and-login). However, any time it mentions "localhost:5000", replace with "127.0.0.1:5000", and also, add a second link each time, with your deployed heroku app link created in the next steps. Importantly, you will need to create the OpenID Connect Config File, titled client_secrets.json. 
+
+In order to deploy to [Heroku](https://www.heroku.com/):
+ 
+- In your terminal, type ```pip freeze > requirements.txt```
+
+- In your Procfile, add ```web: gunicorn app:app```
+
+- On [Heroku](https://www.heroku.com/), create an account, and then create a new app. 
+
+- In the settings, you will need to set the follow [Config Vars](/readme/img/features/okta.PNG)
+  - Some of these details will be found on your Okta Dev Console. 
+
+- If you have pushed to github, remove env.py from your gitignore to allow heroku to use the variables.
+
+- Finally, after creating some commits, you can type the following in your terminal: 
+  - ```heroku login```
+  - ```heroku git:remote -a {your-project-name}```
+  - ```git push heroku master:master```
+
+In run.py, you will need to find and edit the following to your own details: 
+```
+okta_client = UsersClient("{your Okta base_url}",
+                          os.environ.get("AUTH_TOKEN"))
+```
+```
+logout_request = ("{your Okta base_url}/oauth2/default/v1/"
+                      f"logout?id_token_hint={id_token}&post_logout_redirect_"
+                      "uri={your heroku link}") 
+```
 # Credits
 
 ## Content
@@ -267,7 +337,6 @@ To run the project locally:
 - [Fenchurch Restaurant, Sky Garden London](https://skygarden.london/wp-content/uploads/2019/10/untitled-23-of-47-e1579528528296-3840x2160.jpg), for the image used as the hero image. 
 
 - [Black Star PNG](https://icon2.cleanpng.com/20171220/ofw/star-png-image-5a3a7e9651e390.02167008151378293433541614.jpg), then editted in photoshop to multiply the stars. 
-
 
 ## Inspiration
 

@@ -192,16 +192,16 @@
 
 ## Validation Testing Results 
 
-![HTML validation](/readme/images/validation/html.png)
+![HTML validation](/readme/img/validation/html.png)
 
 - [Messages filtered were ones to do with UiKit](/readme/img/validation/message_filtering.png)
 
-![CSS validation](/readme/images/validation/css.png)
+![CSS validation](/readme/img/validation/css.png)
 
 
-![JS validation](/readme/images/validation/js.png)
+![JS validation](/readme/img/validation/js.png)
 
 
-![PEP8 validation](/readme/images/validation/pep8.png)
+![PEP8 validation](/readme/img/validation/pep8.png)
 
 

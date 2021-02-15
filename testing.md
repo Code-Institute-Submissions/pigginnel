@@ -21,7 +21,7 @@
 
 # Testing each Feature
 
-- [Index Page](/readme/images/features/index.PNG)
+- Index Page
     - Appeared as intended across all devices. 
     
 - [About Section](/readme/img/features/about.PNG)

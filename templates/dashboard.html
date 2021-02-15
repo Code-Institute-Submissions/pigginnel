@@ -70,7 +70,8 @@
                         <div class="uk-card-header">
                             <div class="uk-grid-small uk-flex-middle" uk-grid>
                                 <div class="uk-width-expand">
-                                    <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?</h3>
+                                    <h3 class="uk-card-title uk-margin-remove-bottom">When would you like to join us?
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -139,8 +140,7 @@
                         <div class="uk-card-body">
                             <form method="POST" action="{{ url_for('add_review') }}">
                                 <div class="uk-margin">
-                                    <label class="starsTitle" for="stars">How many Stars would you give your
-                                        meal?</label><br />
+                                    <label class="starsTitle" for="stars">How many Stars would you give your meal?</label><br />
                                 </div>
                                 <img src="{{url_for('static', filename='/img/5star.png')}}" align="middle"
                                     class=refStars />

@@ -4,15 +4,15 @@
         {% for review in reviews %}
         {% if review.stars == "1" %}
         <li class="tag-one">
-        {% elif review.stars == "2" %}
+            {% elif review.stars == "2" %}
         <li class="tag-two">
-        {% elif review.stars == "3" %}
+            {% elif review.stars == "3" %}
         <li class="tag-three">
-        {% elif review.stars == "4" %}
+            {% elif review.stars == "4" %}
         <li class="tag-four">
-        {% elif review.stars == "5" %}
+            {% elif review.stars == "5" %}
         <li class="tag-five">
-        {% endif %}
+            {% endif %}
             <div class="uk-card uk-card-default reviewCards">
                 <div class="uk-card-header">
                     <div class="uk-grid-medium uk-flex-middle" uk-grid>

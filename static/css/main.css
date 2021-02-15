@@ -1,367 +1,374 @@
-html,body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-    font-family: 'Raleway', sans-serif;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  font-family: "Raleway", sans-serif;
 }
 
 .uk-sticky {
-    background-color: white;
+  background-color: white;
 }
 
-.rname { 
-    margin-top: 0.5em;
-    font-family: 'Permanent Marker', cursive;
-    font-size: 50px;
-    color:black;
-    text-align: center;
+.rname {
+  margin-top: 0.5em;
+  font-family: "Permanent Marker", cursive;
+  font-size: 50px;
+  color: black;
+  text-align: center;
 }
 
-.uk-link, a {
-    color: black;
-    font-family: 'Indie Flower', cursive;
+.uk-link,
+a {
+  color: black;
+  font-family: "Indie Flower", cursive;
 }
 
 a:hover {
-    text-decoration: none;
-    color:black;
-  }
+  text-decoration: none;
+  color: black;
+}
 
 .uk-button {
-    margin-left: 2em;
-    margin-right: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .update {
-    color: red
+  color: red;
 }
 
 .navButton {
-    color: black;
-    font-family: 'Indie Flower', cursive !important;
+  color: black;
+  font-family: "Indie Flower", cursive !important;
 }
-.navButton:hover{
-    font-weight: bold;
+.navButton:hover {
+  font-weight: bold;
 }
 /*-------------------------------- Navbar -------------------- */
 .navButton {
-    display: none;
+  display: none;
 }
 
 @media only screen and (max-width: 760px) {
-    #navFull {
-      display: none;
-    }
-    .hero-title{
-        display: flex;
-        margin-bottom: 1em;
-        
-    }
-    .navButton {
-        display: flex;
-        float: right;
-        margin-top: -3.5em;
-        background-color: transparent;
-    }
-    .rname {
-        font-size: 30px;
-        display: flex;
-        justify-content: flex-start;
-        margin-left: 5vw;
-    }
+  #navFull {
+    display: none;
+  }
+  .hero-title {
+    display: flex;
+    margin-bottom: 1em;
+  }
+  .navButton {
+    display: flex;
+    float: right;
+    margin-top: -3.5em;
+    background-color: transparent;
+  }
+  .rname {
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5vw;
+  }
 }
 
 @media only screen and (max-width: 312px) {
-    .navButton {
-        justify-content: center;
-        margin-top: 0em;
-    }
-    .rname {
-        font-size: 30px;
-        justify-content: center;
-    }
+  .navButton {
+    justify-content: center;
+    margin-top: 0em;
+  }
+  .rname {
+    font-size: 30px;
+    justify-content: center;
+  }
 }
 /*-------------------------------- Footer -------------------- */
 footer {
-    margin-top: 5vh;
+  margin-top: 5vh;
 }
 .social-link {
-    position: relative;
-    float: right;
-    padding: 0% 0.5vw 0% 0.5vw;
+  position: relative;
+  float: right;
+  padding: 0% 0.5vw 0% 0.5vw;
 }
 
 .social-link:hover {
-    color: grey;
+  color: grey;
 }
 
-.footer-email>p{
-    position: relative;
-    float: left;
-    color: black;
-    font-family: 'Indie Flower', cursive;
-    margin-left: 11vw;
-    text-align: center;
+.footer-email > p {
+  position: relative;
+  float: left;
+  color: black;
+  font-family: "Indie Flower", cursive;
+  margin-left: 11vw;
+  text-align: center;
 }
-.jm-text{
-    font-family: 'Indie Flower', cursive !important;
+.jm-text {
+  font-family: "Indie Flower", cursive !important;
 }
 @media only screen and (max-width: 760px) {
-    .mobile-hide{
-        display: none;
-    }
+  .mobile-hide {
+    display: none;
+  }
 
-    .footer-email>p{
-        margin-left: 5vw;
-    }
-    .socialmedia{
-        margin-right: 5vw;
-    }
-    .jm-link{
-        text-align: center;
-    }
-    
+  .footer-email > p {
+    margin-left: 5vw;
+  }
+  .socialmedia {
+    margin-right: 5vw;
+  }
+  .jm-link {
+    text-align: center;
+  }
 }
 
 /*-------------------------------- Index Sections -------------------- */
 
-#about, #gMap, #menu, #reviews {
-    padding-top: 2em;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width: 90vw;
-    scroll-margin-top: 10em;
+#about,
+#gMap,
+#menu,
+#reviews {
+  padding-top: 2em;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  width: 90vw;
+  scroll-margin-top: 10em;
 }
 
 /*-------------------------------- Hero Section -------------------- */
 
 .heroimage {
-    display: block;
-    width: auto;
-    min-width: 100vw;
-    height: 95vh;
-    max-height: 95vh;
-    margin-left: auto;
-    margin-right: auto;
-    object-fit: cover;
+  display: block;
+  width: auto;
+  min-width: 100vw;
+  height: 95vh;
+  max-height: 95vh;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
 }
 
 /*-------------------------------- About Section -------------------- */
 
 .chefimage {
-    height: 100%;
-    width: auto;
+  height: 100%;
+  width: auto;
 }
 
 /*-------------------------------- Menu Section -------------------- */
 
 .sampleMenu {
-   margin-right: -3vw;
+  margin-right: -3vw;
 }
 
 .menuText {
-    margin-right: 3vw;
+  margin-right: 3vw;
 }
 
-.sampleMenu > dd, .expressMenu > dd {
-    font-style: italic;
-    font-size: 85%;
-    font-family: 'Raleway', sans-serif;
+.sampleMenu > dd,
+.expressMenu > dd {
+  font-style: italic;
+  font-size: 85%;
+  font-family: "Raleway", sans-serif;
 }
 
-.uk-description-list>dt {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
+.uk-description-list > dt {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }
 
 .menuTitle {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }
 
-.uk-tab>.uk-active>a {
-    color: #333;
-    border-color: black;
+.uk-tab > .uk-active > a {
+  color: #333;
+  border-color: black;
 }
 
 @media only screen and (max-width: 1200px) {
-    .titles {
-        display: flex;
-        justify-content: center;
-    }
+  .titles {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 /*-------------------------------- Review Cards -------------------- */
 
 #user_review_stars {
-    margin-left: 35%;
-    margin-right: 35%;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 
 .reviewStars {
-    height: auto;
-    width: 50%;
-    margin-left: 20%;
-    margin-right: 20%;
+  height: auto;
+  width: 50%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .starTitle {
-    text-align: center;
+  text-align: center;
 }
 
-.reload-button{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2em;
-    width: 30%;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
+.reload-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 30%;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }
 
 .filters {
-    margin-top: 2em;
-    justify-content: center;
+  margin-top: 2em;
+  justify-content: center;
 }
 
-.uk-subnav-pill>*>:first-child {
-    padding: 5px 2px;
-    background: 0 0;
-    color: #999;
-    min-height: 0px;
-    font-family: 'Indie Flower', cursive;
+.uk-subnav-pill > * > :first-child {
+  padding: 5px 2px;
+  background: 0 0;
+  color: #999;
+  min-height: 0px;
+  font-family: "Indie Flower", cursive;
 }
 
-.uk-subnav-pill>.uk-active>a{
-    background-color: transparent;
-    text-align: center;
-    font-weight: bold;
+.uk-subnav-pill > .uk-active > a {
+  background-color: transparent;
+  text-align: center;
+  font-weight: bold;
 }
-.uk-subnav>* {
-    padding-left: 0px;
+.uk-subnav > * {
+  padding-left: 0px;
 }
 
 @media only screen and (max-width: 760px) {
-    .reload-button{
-        width: 80%;
-        
-    }
+  .reload-button {
+    width: 80%;
+  }
 }
 /*-------------------------------- Map Section -------------------- */
 
 #map {
-    height: 100%;
+  height: 100%;
 }
 
 /*-------------------------------- Dashboard -------------------- */
 
 #dashboard {
-    margin-top: 7vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
+  margin-top: 7vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 #reviewModal {
-text-align: center;
+  text-align: center;
 }
 
 #edit_review_section {
-    margin-top: 3vh;
-    text-align: center;
+  margin-top: 3vh;
+  text-align: center;
 }
 
 #editStars {
-    max-width: 25%;
+  max-width: 25%;
 }
 
 #selectStars {
-    max-width: 90%;
+  max-width: 90%;
 }
 
-.userReservation, .userReviews {
-    margin-bottom: 2em;
+.userReservation,
+.userReviews {
+  margin-bottom: 2em;
 }
 
 .buttonReservation {
-    display: flex;
-    margin-left: -2vw;
-    margin-top: 2em;
-    margin-bottom: 2em;
+  display: flex;
+  margin-left: -2vw;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
-.buttonReview { 
-    display: flex;
-    justify-content: flex-end;
-    margin-right: -1vw;
-    margin-top: 2em;
-    margin-bottom: 2em;
+.buttonReview {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -1vw;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 .reservation_date {
-    text-align: center;
+  text-align: center;
 }
 
 .editReview {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-#delete-reservation, #delete-review{
-    text-align: center;
+#delete-reservation,
+#delete-review {
+  text-align: center;
 }
 
-.cancel-buttons{
-    display: flex;
-    justify-content: center;
-    margin-left: 0%;
-    margin-right: 0%;
+.cancel-buttons {
+  display: flex;
+  justify-content: center;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
 .submit-button {
-    display: flex;
-    justify-content: center; 
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 1em;
 }
 
-.account-button{
-    margin-left: -2%;
+.account-button {
+  margin-left: -2%;
 }
 
 @media only screen and (max-width: 1024px) {
-    .account-button{
-        margin-left: 2%;
-    }
+  .account-button {
+    margin-left: 2%;
+  }
 }
 @media only screen and (max-width: 760px) {
-    .buttonReservation, .buttonReview, .account-button {
-        display: block;
-        justify-content: center;
-    }
-    .account-button{
-        margin-left: 0%;
-    }
-    .bookButton{
-        margin-left: 2%;
-        width: 95%;
-    }
-    .reviewButton{
-        margin-left: 0%;
-        width: 95%;
-    }
+  .buttonReservation,
+  .buttonReview,
+  .account-button {
+    display: block;
+    justify-content: center;
+  }
+  .account-button {
+    margin-left: 0%;
+  }
+  .bookButton {
+    margin-left: 2%;
+    width: 95%;
+  }
+  .reviewButton {
+    margin-left: 0%;
+    width: 95%;
+  }
 }
 /*-------------------------------- Edit Reservation -------------------- */
 .margined {
-    margin-left: 10vw;
-    margin-right: 10vw;
-    margin-bottom: 2em;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 2em;
 }
 
-.error{
-    margin-top: 5em;
-    margin-left: 5%;
+.error {
+  margin-top: 5em;
+  margin-left: 5%;
 }

@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <script src="/static/js/map.js" ></script>
+    <script src="/static/js/map.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     {% block styles %}
@@ -26,29 +26,29 @@
 
 <body>
     <header id="navsection">
-    <div class="uk-sticky" uk-sticky="offset: 50; bottom: #viewport">
+        <div class="uk-sticky" uk-sticky="offset: 50; bottom: #viewport">
 
-        <div class="hero-title" uk-grid>
-            <div class="uk-width-expand">
-                <a href="{{ url_for('index') }}">
-                    <h1 class="rname">Pig in a Ginnel</h1>
-                </a>
+            <div class="hero-title" uk-grid>
+                <div class="uk-width-expand">
+                    <a href="{{ url_for('index') }}">
+                        <h1 class="rname">Pig in a Ginnel</h1>
+                    </a>
 
-                <button class="uk-button uk-margin-small-right navButton" type="button"
-                    uk-toggle="target: #offcanvas-nav-primary"><i class="fas fa-bars fa-2x"></i>
-                </button>
+                    <button class="uk-button uk-margin-small-right navButton" type="button"
+                        uk-toggle="target: #offcanvas-nav-primary"><i class="fas fa-bars fa-2x"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-        
-        <div id="navFull">
-            {% include 'navbar.html' %}
-        </div>
 
-        <div id="navMob">
-            {% include 'navbar_mobile.html' %}
-        </div>
+            <div id="navFull">
+                {% include 'navbar.html' %}
+            </div>
 
-    </div>
+            <div id="navMob">
+                {% include 'navbar_mobile.html' %}
+            </div>
+
+        </div>
     </header>
     {% block content %}
 
@@ -60,10 +60,9 @@
                 <div class="jm-link">
                     <br>
                     <br>
-                    <a class="uk-button uk-button-text jm-text"
-                    href="https://www.jamesmartinchef.co.uk">
-                    For more on James Martin
-                    and James Martin Restaurants</a>
+                    <a class="uk-button uk-button-text jm-text" href="https://www.jamesmartinchef.co.uk">
+                        For more on James Martin
+                        and James Martin Restaurants</a>
                 </div>
             </div>
 
@@ -75,31 +74,25 @@
                         020 7946 0175
                         <br>
                         notarealemail@piag.com
-                        
+
                     </p>
                 </div>
-            
+
                 <div class="socialmedia">
                     <br>
                     <br class="mobile-hide">
                     <a class="social-link social-right"
-                    href="https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d12883339-Reviews-Frog_By_Adam_Handling-London_England.html"
-                    target="_blank">
+                        href="https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d12883339-Reviews-Frog_By_Adam_Handling-London_England.html"
+                        target="_blank">
                         <i class="fab fa-tripadvisor fa-lg"></i>
                     </a>
-                    <a class="social-link"
-                    href="https://www.instagram.com/jamesmartinchef/?hl=en"
-                    target="_blank">
+                    <a class="social-link" href="https://www.instagram.com/jamesmartinchef/?hl=en" target="_blank">
                         <i class="fab fa-instagram fa-lg"></i>
                     </a>
-                    <a class="social-link"
-                    href="twitter.com/jamesmartinchef" 
-                    target="_blank">
+                    <a class="social-link" href="twitter.com/jamesmartinchef" target="_blank">
                         <i class="fab fa-twitter fa-lg"></i>
                     </a>
-                    <a class="social-link"
-                    href="https://www.facebook.com/jamesmartinchefpage"
-                    target="_blank">
+                    <a class="social-link" href="https://www.facebook.com/jamesmartinchefpage" target="_blank">
                         <i class="fab fa-facebook-f fa-lg"></i>
                     </a>
                 </div>

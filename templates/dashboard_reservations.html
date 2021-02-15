@@ -18,7 +18,8 @@
         </div>
         <div class="uk-card-footer">
             {% if g.user.profile.email != admin %}
-            <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text" uk-toggle>
+            <a href="{{ url_for('edit_reservation', reservation_id=reservation._id) }}" class="uk-button uk-button-text"
+                uk-toggle>
                 Edit My Booking</a>
             {% endif %}
             <button class="uk-button uk-button-text" type="button" uk-toggle="target: #delete-reservation">Cancel My Booking</button>
@@ -29,9 +30,11 @@
                 <p>Are you sure you want to cancel?</p>
                 <p class="uk-text-right">
                     <div uk-grid class="cancel-buttons">
-                    <button class="uk-width-1-2 uk-button uk-button-default uk-modal-close submit-button" type="button">Keep it</button>
-                    <a href="{{ url_for('delete_reservation', reservation_id=reservation._id) }}" class="submit-button uk-width-1-2 uk-button uk-button-primary">
-                        Cancel my Booking</a>
+                        <button class="uk-width-1-2 uk-button uk-button-default uk-modal-close submit-button"
+                            type="button">Keep it</button>
+                        <a href="{{ url_for('delete_reservation', reservation_id=reservation._id) }}"
+                            class="submit-button uk-width-1-2 uk-button uk-button-primary">
+                            Cancel my Booking</a>
                     </div>
                 </p>
             </div>

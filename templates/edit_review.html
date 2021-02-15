@@ -24,24 +24,25 @@
                     step="1" id="editStars" name="stars" required /><br /><br />
                 <label for="review">How was your meal?</label>
                 <div class="uk-margin">
-                    <textarea class="uk-textarea" rows="5" id="review" name="review"
-                    minlength="5" maxlength="1500" required>{{ review.review }}</textarea></textarea><br /><br />
+                    <textarea class="uk-textarea" rows="5" id="review" name="review" minlength="5" maxlength="1500"
+                        required>{{ review.review }}</textarea></textarea><br /><br />
                 </div>
                 <div class="uk-card-footer">
-                    <a class="uk-button uk-button-default uk-modal-close submit-button" href="{{ url_for('dashboard') }}">Cancel</a>
+                    <a class="uk-button uk-button-default uk-modal-close submit-button"
+                        href="{{ url_for('dashboard') }}">Cancel</a>
                     <button class="uk-button uk-button-primary submit-button" type="submit">Save</button>
                 </div>
             </form>
         </div>
     </div>
 
-{% else %}
-<div class="error">
+    {% else %}
+    <div class="error">
 
-    <p>Nothing to be found here</p>
+        <p>Nothing to be found here</p>
 
-    <a class="uk-button uk-button-secondary" href="/">Return Home</a>
-</div>
+        <a class="uk-button uk-button-secondary" href="/">Return Home</a>
+    </div>
 </section>
 
 {% endif %}
